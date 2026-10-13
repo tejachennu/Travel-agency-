@@ -2,14 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, BadgeCheck, Headphones, PlaneTakeoff, Star } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ArrowRight, Headphones, Star } from "lucide-react";
 import { FlagCA, FlagIN, WhatsAppIcon } from "@/components/icons";
 import { EnquiryBar } from "./EnquiryBar";
+import { HeroDeck, type DeckSlide, type PauseReason } from "./HeroDeck";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
-const slides = [
+const slides: DeckSlide[] = [
   { src: "/images/destinations/maldives.webp", name: "Maldives", note: "Overwater villas", slug: "maldives" },
   { src: "/images/destinations/kerala.webp", name: "Kerala", note: "God's Own Country", slug: "kerala" },
   { src: "/images/destinations/dubai.webp", name: "Dubai", note: "City of dreams", slug: "dubai" },
@@ -19,20 +20,39 @@ const slides = [
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
+const AUTOPLAY_MS = 4800;
 
 export function Hero() {
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [[index, direction], setPage] = useState<[number, number]>([0, 0]);
+  const [pauses, setPauses] = useState<Record<PauseReason, boolean>>({ hover: false, focus: false, drag: false });
+  const reduceMotion = useReducedMotion();
+  const paused = pauses.hover || pauses.focus || pauses.drag;
 
+  const paginate = useCallback((dir: 1 | -1) => {
+    setPage(([i]) => [(i + dir + slides.length) % slides.length, dir]);
+  }, []);
+
+  const select = useCallback((target: number) => {
+    setPage(([i]) => {
+      if (target === i) return [i, 0];
+      // Travel the shorter way round the loop so the deck animates sensibly.
+      const forward = (target - i + slides.length) % slides.length;
+      return [target, forward <= slides.length / 2 ? 1 : -1];
+    });
+  }, []);
+
+  const onPause = useCallback((reason: PauseReason, active: boolean) => {
+    setPauses((p) => (p[reason] === active ? p : { ...p, [reason]: active }));
+  }, []);
+
+  // Restarting the timer on every change gives a full interval after each manual swipe.
   useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % slides.length), 4800);
-    return () => window.clearInterval(id);
-  }, [paused]);
+    if (paused || reduceMotion) return;
+    const id = window.setTimeout(() => paginate(1), AUTOPLAY_MS);
+    return () => window.clearTimeout(id);
+  }, [index, paused, reduceMotion, paginate]);
 
   const current = slides[index];
-  const next = slides[(index + 1) % slides.length];
-  const after = slides[(index + 2) % slides.length];
 
   return (
     <section className="relative isolate overflow-hidden bg-brand-950 pb-28 text-white sm:pb-32">
@@ -187,104 +207,17 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Postcard stack */}
-        <div
-          className="relative mx-auto w-full max-w-[22rem] sm:max-w-sm lg:col-span-5 lg:max-w-none lg:pl-6"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="relative mx-auto aspect-[4/5] w-[82%] lg:w-[80%]">
-            {/* back cards */}
-            <div className="absolute inset-0 translate-x-8 translate-y-3 rotate-[8deg] rounded-[1.75rem] bg-white/90 p-2.5 opacity-70 shadow-lift">
-              <div className="relative h-full overflow-hidden rounded-[1.25rem]">
-                <Image src={after.src} alt="" fill sizes="320px" className="object-cover" />
-              </div>
-            </div>
-            <div className="absolute inset-0 -translate-x-6 translate-y-1 -rotate-[6deg] rounded-[1.75rem] bg-white/95 p-2.5 opacity-90 shadow-lift">
-              <div className="relative h-full overflow-hidden rounded-[1.25rem]">
-                <Image src={next.src} alt="" fill sizes="320px" className="object-cover" />
-              </div>
-            </div>
-
-            {/* front card */}
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div
-                key={current.src}
-                initial={{ opacity: 0, scale: 0.9, rotate: -6, x: -24 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0, x: 0 }}
-                exit={{ opacity: 0, x: 140, rotate: 14, scale: 0.95 }}
-                transition={{ duration: 0.75, ease }}
-                className="absolute inset-0 rounded-[1.75rem] bg-white p-2.5 pb-16 shadow-[0_40px_80px_-24px_rgb(0_0_0/0.6)]"
-              >
-                <Link href={`/destinations/${current.slug}`} className="group relative block h-full overflow-hidden rounded-[1.25rem]">
-                  <Image
-                    src={current.src}
-                    alt={`${current.name} — ${current.note}`}
-                    fill
-                    priority={index === 0}
-                    sizes="(min-width: 1024px) 400px, 80vw"
-                    className="object-cover transition-transform duration-[2s] group-hover:scale-105"
-                  />
-                </Link>
-                <div className="absolute inset-x-5 bottom-3 flex items-end justify-between text-ink">
-                  <div>
-                    <p className="font-script text-[2rem] leading-none text-brand-700">{current.name}</p>
-                    <p className="mt-1 text-xs font-medium tracking-wide text-muted uppercase">{current.note}</p>
-                  </div>
-                  <span className="mb-1 rounded-full bg-teal-50 px-3 py-1 text-[0.7rem] font-semibold text-teal-700">
-                    MJ Holidays
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* floating chips */}
-            <div className="absolute top-10 -left-10 z-10 hidden animate-float items-center gap-3 rounded-2xl bg-white/95 p-3 pr-4 text-ink shadow-lift backdrop-blur sm:flex lg:-left-16">
-              <span className="grid size-9 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                <PlaneTakeoff className="size-5" />
-              </span>
-              <div className="text-xs">
-                <p className="font-semibold">AMD → DXB</p>
-                <p className="text-muted">Flights booked</p>
-              </div>
-            </div>
-            <div className="absolute -right-6 bottom-24 z-10 hidden animate-float-delayed items-center gap-3 rounded-2xl bg-white/95 p-3 pr-4 text-ink shadow-lift backdrop-blur sm:flex lg:-right-10">
-              <span className="grid size-9 place-items-center rounded-xl bg-teal-50 text-teal-600">
-                <BadgeCheck className="size-5" />
-              </span>
-              <div className="text-xs">
-                <p className="font-semibold">Visa approved</p>
-                <p className="text-muted">Docs handled for you</p>
-              </div>
-            </div>
-          </div>
-
-          {/* slide indicators */}
-          <div className="mt-10 flex items-center justify-center gap-2" role="tablist" aria-label="Featured destinations">
-            {slides.map((s, i) => (
-              <button
-                key={s.name}
-                type="button"
-                role="tab"
-                aria-selected={i === index}
-                aria-label={s.name}
-                onClick={() => setIndex(i)}
-                className="group relative h-1.5 overflow-hidden rounded-full bg-white/20 transition-all"
-                style={{ width: i === index ? 36 : 12 }}
-              >
-                {i === index && (
-                  <motion.span
-                    key={`${index}-${paused}`}
-                    className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-brand-300 to-teal-300"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: paused ? 0 : 4.8, ease: "linear" }}
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* Swipeable postcard deck */}
+        <HeroDeck
+          slides={slides}
+          index={index}
+          direction={direction}
+          paused={paused || Boolean(reduceMotion)}
+          interval={AUTOPLAY_MS}
+          onPaginate={paginate}
+          onSelect={select}
+          onPause={onPause}
+        />
       </div>
 
       <div className="container-page relative mt-16 lg:mt-20">

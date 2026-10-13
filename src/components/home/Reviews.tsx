@@ -1,6 +1,7 @@
 import { ReviewCard } from "@/components/ReviewCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { reviews } from "@/data/reviews";
+import { ReviewsCarousel } from "./ReviewsCarousel";
 
 export function Reviews() {
   const rowA = reviews.filter((_, i) => i % 2 === 0);
@@ -21,7 +22,13 @@ export function Reviews() {
         />
       </div>
 
-      <div className="mt-14 space-y-5">
+      {/* Small screens: swipeable cards */}
+      <div className="mt-10 md:hidden">
+        <ReviewsCarousel reviews={reviews} />
+      </div>
+
+      {/* Larger screens: two drifting rows */}
+      <div className="mt-14 hidden space-y-5 md:block">
         {[rowA, rowB].map((row, r) => (
           <div key={r} className="mask-fade-x flex">
             {[0, 1].map((copy) => (

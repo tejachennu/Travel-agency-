@@ -65,6 +65,10 @@
   @keyframes dash {
     to { stroke-dashoffset: -40; }
   }
+  @keyframes nudge {
+    0%, 100% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+  }
   @keyframes shine {
     0% { transform: translateX(-120%) skewX(-20deg); }
     60%, 100% { transform: translateX(220%) skewX(-20deg); }
