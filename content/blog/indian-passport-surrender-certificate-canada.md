@@ -48,7 +48,7 @@ Children who held Indian passports and became Canadian citizens with their paren
 - Proof of **address** in your consular jurisdiction
 - Any additional documents listed on the BLS checklist (for example, if your name has changed)
 
-Always print the checklist for **your** jurisdiction — Ottawa, Toronto and Vancouver each publish their own.
+Always print the checklist for **your** jurisdiction — Ottawa, Toronto and Vancouver each publish their own. Nova Scotia and the rest of Atlantic Canada fall under **Toronto**, with a BLS centre in Halifax.
 
 ## Step-by-step
 

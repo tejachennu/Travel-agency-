@@ -18,7 +18,7 @@ faqs:
   - q: "Do I need to surrender my Indian passport before applying for OCI?"
     a: "Yes, if you were an Indian citizen who acquired Canadian citizenship, you generally need a surrender certificate (or proof of renunciation) for your Indian passport as part of the OCI application. See our passport surrender guide for that step."
   - q: "Which BLS centre should I use?"
-    a: "Your jurisdiction depends on where you live. Ottawa's High Commission covers areas including the National Capital Region, Ontario postal codes starting with K, and Quebec (Montreal) postal codes starting with H or J; Toronto and Vancouver consulates cover their own regions. The BLS website lets you check by postal code."
+    a: "Your jurisdiction depends on where you live. Ottawa's High Commission covers areas including the National Capital Region, Ontario postal codes starting with K, and Quebec (Montreal) postal codes starting with H or J; the Toronto consulate covers the rest of Ontario, Manitoba and Atlantic Canada (Nova Scotia, New Brunswick, PEI and Newfoundland), with a BLS centre in Halifax; Vancouver covers BC, Alberta, Saskatchewan and the territories. The BLS website lets you check by postal code."
 sources:
   - title: "BLS International — Indian Visa & Passport Application Centre, Canada"
     url: "https://www.blsindia-canada.com/"
@@ -96,6 +96,8 @@ Fees are split between the Government of India and BLS. For the **Ottawa jurisdi
 | Duplicate (lost/damaged) | CAD 135 | CAD 5 |
 
 On top of these there is a small **BLS service fee** and optional **courier** charges. Fees change, so always check the live fee page before paying.
+
+If you live in **Nova Scotia** or elsewhere in Atlantic Canada, you apply under the **Toronto** jurisdiction (BLS has a centre in Halifax), so check the Toronto fee table, which can differ slightly from Ottawa's. Our [PCC](/blog/indian-pcc-canada-bls) and [passport renewal](/blog/indian-passport-renewal-canada) guides cover the jurisdiction map in more detail.
 
 ## When do you need an OCI re-issue?
 
