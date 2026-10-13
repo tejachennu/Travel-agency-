@@ -69,7 +69,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
           <Reveal className="relative mx-auto w-full max-w-sm lg:mr-0">
             <div className="rotate-[3deg] rounded-[1.75rem] bg-white p-2.5 pb-14 shadow-[0_40px_80px_-24px_rgb(0_0_0/0.7)]">
               <div className={`relative overflow-hidden rounded-[1.25rem] ${shape}`}>
-                <Image src={d.image} alt={d.imageAlt} fill priority sizes="(min-width: 1024px) 380px, 80vw" className="object-cover" />
+                <Image src={d.image} alt={d.imageAlt} fill loading="eager" fetchPriority="high" sizes="(min-width: 1024px) 380px, 80vw" className="object-cover" />
               </div>
               <p className="absolute bottom-3 left-5 font-script text-3xl text-brand-700">{d.name}</p>
             </div>

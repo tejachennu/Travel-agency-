@@ -12,7 +12,7 @@ export function Logo({ tone = "dark", className }: { tone?: "dark" | "light"; cl
           alt=""
           fill
           sizes="31px"
-          priority
+          loading="eager"
           className="object-contain"
         />
       </span>

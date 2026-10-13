@@ -22,7 +22,7 @@ export function PageHero({ eyebrow, title, intro, image, crumbs, children, aside
   return (
     <section className={cn("relative isolate overflow-hidden bg-brand-950 pt-36 pb-20 text-white sm:pt-44 sm:pb-28", className)}>
       {image && (
-        <Image src={image} alt="" fill priority sizes="100vw" className="-z-20 scale-110 object-cover opacity-45 blur-2xl" />
+        <Image src={image} alt="" fill loading="eager" sizes="96px" className="-z-20 scale-110 object-cover opacity-45 blur-2xl" />
       )}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/60 via-brand-950/80 to-brand-950" />
       <div className="absolute -top-32 -left-32 -z-10 size-[34rem] animate-aurora rounded-full bg-brand-600/40 blur-[120px]" />

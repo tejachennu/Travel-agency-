@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, motionValue, useMotionValueEvent, type MotionValue } from "motion/react";
 import { ArrowRight, Headphones, Star } from "lucide-react";
 import { FlagCA, FlagIN, WhatsAppIcon } from "@/components/icons";
 import { EnquiryBar } from "./EnquiryBar";
-import { HeroDeck, type DeckSlide, type PauseReason } from "./HeroDeck";
+import { HeroDeck, type DeckSlide } from "./HeroDeck";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
 const slides: DeckSlide[] = [
@@ -20,55 +20,18 @@ const slides: DeckSlide[] = [
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const AUTOPLAY_MS = 4800;
+
+// Delay the backdrop crossfade until the swipe has had its first frames to itself.
+const BACKDROP_DELAY_MS = 350;
 
 export function Hero() {
-  const [[index, direction], setPage] = useState<[number, number]>([0, 0]);
-  const [pauses, setPauses] = useState<Record<PauseReason, boolean>>({ hover: false, focus: false, drag: false });
-  const reduceMotion = useReducedMotion();
-  const paused = pauses.hover || pauses.focus || pauses.drag;
-
-  const paginate = useCallback((dir: 1 | -1) => {
-    setPage(([i]) => [(i + dir + slides.length) % slides.length, dir]);
-  }, []);
-
-  const select = useCallback((target: number) => {
-    setPage(([i]) => {
-      if (target === i) return [i, 0];
-      // Travel the shorter way round the loop so the deck animates sensibly.
-      const forward = (target - i + slides.length) % slides.length;
-      return [target, forward <= slides.length / 2 ? 1 : -1];
-    });
-  }, []);
-
-  const onPause = useCallback((reason: PauseReason, active: boolean) => {
-    setPauses((p) => (p[reason] === active ? p : { ...p, [reason]: active }));
-  }, []);
-
-  // Restarting the timer on every change gives a full interval after each manual swipe.
-  useEffect(() => {
-    if (paused || reduceMotion) return;
-    const id = window.setTimeout(() => paginate(1), AUTOPLAY_MS);
-    return () => window.clearTimeout(id);
-  }, [index, paused, reduceMotion, paginate]);
-
-  const current = slides[index];
+  // The deck owns the gestures and writes the front card here; only the backdrop listens.
+  const [active] = useState(() => motionValue(0));
 
   return (
     <section className="relative isolate overflow-hidden bg-brand-950 pb-28 text-white sm:pb-32">
       {/* Ambient background that follows the active postcard */}
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={current.src}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.42 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.4 }}
-          className="absolute inset-0 -z-20"
-        >
-          <Image src={current.src} alt="" fill sizes="100vw" className="scale-110 object-cover blur-2xl" priority={index === 0} />
-        </motion.div>
-      </AnimatePresence>
+      <HeroBackdrop active={active} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/70 via-brand-950/80 to-brand-950" />
       <div className="absolute -top-40 -left-40 -z-10 size-[42rem] animate-aurora rounded-full bg-brand-600/50 blur-[120px]" />
       <div className="absolute -right-40 bottom-0 -z-10 size-[36rem] animate-aurora rounded-full bg-teal-500/30 blur-[120px] [animation-delay:-6s]" />
@@ -208,21 +171,41 @@ export function Hero() {
         </div>
 
         {/* Swipeable postcard deck */}
-        <HeroDeck
-          slides={slides}
-          index={index}
-          direction={direction}
-          paused={paused || Boolean(reduceMotion)}
-          interval={AUTOPLAY_MS}
-          onPaginate={paginate}
-          onSelect={select}
-          onPause={onPause}
-        />
+        <HeroDeck slides={slides} active={active} />
       </div>
 
       <div className="container-page relative mt-16 lg:mt-20">
         <EnquiryBar />
       </div>
     </section>
+  );
+}
+
+/** Blurred photo of the front card behind the hero. Re-renders on its own, after the swipe is under way. */
+function HeroBackdrop({ active }: { active: MotionValue<number> }) {
+  const [index, setIndex] = useState(() => active.get());
+  const [target, setTarget] = useState(index);
+  useMotionValueEvent(active, "change", setTarget);
+  useEffect(() => {
+    if (target === index) return;
+    const id = window.setTimeout(() => setIndex(target), BACKDROP_DELAY_MS);
+    return () => window.clearTimeout(id);
+  }, [target, index]);
+
+  const src = slides[index].src;
+  return (
+    <AnimatePresence mode="popLayout">
+      <motion.div
+        key={src}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.42 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1.4 }}
+        className="absolute inset-0 -z-20 will-change-[opacity]"
+      >
+        {/* Heavily blurred, so a tiny source looks identical and is far cheaper to decode and fade. */}
+        <Image src={src} alt="" fill sizes="96px" loading="eager" className="scale-110 object-cover blur-2xl" />
+      </motion.div>
+    </AnimatePresence>
   );
 }

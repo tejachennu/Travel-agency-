@@ -249,6 +249,13 @@
   }
 }
 
+/* Sections below the first are skipped by the renderer until they near the viewport, so animations
+   up top (like the hero card deck) never pay for painting the rest of a long page. */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
