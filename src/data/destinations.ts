@@ -95,7 +95,7 @@ export const destinations: Destination[] = [
       { title: "Departure", detail: "Airport drop with plenty of memories (and shopping bags)." },
     ],
     inclusions: ["5 nights hotels with breakfast", "All transfers on private / SIC basis", "Coral Island tour", "Safari World with lunch", "24/7 on-trip support"],
-    visa: "Indian passport holders currently enjoy visa-exempt entry. We confirm the latest rules and help with the digital arrival card.",
+    visa: "Indian passport holders get visa-exempt entry for up to 30 days (cut from 60 days on 15 September 2026). You also need the free Thailand Digital Arrival Card (TDAC) — we confirm the latest rules and file it with you.",
     accent: "#E0B63D",
   },
   {
@@ -158,7 +158,7 @@ export const destinations: Destination[] = [
       { title: "Departure", detail: "Last-minute shopping at Bukit Bintang before your airport drop." },
     ],
     inclusions: ["3 nights hotel with breakfast", "Private airport transfers", "City tour", "Genting with cable car", "24/7 on-trip support"],
-    visa: "Visa-free entry is currently available for Indian passport holders. We'll confirm the rules and arrival card before you fly.",
+    visa: "Indian passport holders can visit visa-free for up to 30 days until 31 December 2026, with the free Malaysia Digital Arrival Card (MDAC). We'll confirm the rules before you fly.",
     accent: "#2B6CB0",
   },
   {
@@ -231,7 +231,7 @@ export const destinations: Destination[] = [
       "Inter-hotel transfer",
       "North Bali, South Bali & Kintamani–Ubud tours",
     ],
-    visa: "Indian passport holders get a visa on arrival (or e-VoA in advance), plus the Bali tourist levy — we arrange both.",
+    visa: "Indian passport holders get a 30-day visa on arrival (or e-VoA in advance, IDR 500,000), plus the IDR 150,000 Bali tourist levy — we arrange both.",
     price: { amount: 73499, note: "per person, as offered for our Valentine's departure ex-Ahmedabad / Mumbai. Ask for current dates." },
     accent: "#E2475B",
   },
@@ -266,7 +266,7 @@ export const destinations: Destination[] = [
       { title: "Departure", detail: "Airport drop from Da Nang." },
     ],
     inclusions: ["Vietnam e-visa", "6 nights hotels with breakfast", "Ha Long Bay cruise with lunch", "Ba Na Hills with cable car", "Domestic flight Hanoi → Da Nang"],
-    visa: "Indian passport holders apply for a Vietnam e-visa — we handle the application end to end.",
+    visa: "Indian passport holders need a Vietnam e-visa (up to 90 days, single or multiple entry) — we handle the application end to end.",
     accent: "#D9473F",
   },
   {

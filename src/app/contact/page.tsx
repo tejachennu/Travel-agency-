@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact MJ Holidays — Travel Agent in Kudasan, Gandhinagar",
   description:
     "Talk with MJ Holidays travel experts — B-326, Pramukh Arcade, Kudasan, Gandhinagar (+91 97129 83753) and Chester, Nova Scotia, Canada (+1 647 552 3753). info@mjholidays.in",
   alternates: { canonical: "/contact" },

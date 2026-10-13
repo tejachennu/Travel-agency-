@@ -13,7 +13,7 @@ import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About MJ Holidays — Travel Agency in Kudasan, Gandhinagar",
   description:
     "MJ Holidays is a travel company from Kudasan, Gandhinagar with an office in Chester, Canada — creating unforgettable travel stories with tailor-made holidays and end-to-end travel paperwork.",
   alternates: { canonical: "/about" },

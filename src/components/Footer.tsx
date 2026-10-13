@@ -11,6 +11,7 @@ const explore = [
   { href: "/destinations", label: "All destinations" },
   { href: "/services", label: "Travel services" },
   { href: "/services#documents", label: "Passport, Visa & OCI" },
+  { href: "/blog", label: "Travel guides" },
   { href: "/about", label: "About us" },
   { href: "/contact", label: "Contact" },
 ];

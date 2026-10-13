@@ -85,7 +85,7 @@ export const documentServices: Service[] = [
   {
     id: "oci",
     title: "OCI Application",
-    blurb: "End-to-end help with the Overseas Citizen of India card — online form, photo & signature specs, uploads and the final bundle.",
+    blurb: "End-to-end help with the Overseas Citizen of India card — online form, photo & signature specs, uploads and the final bundle, ready for your in-person biometrics visit at BLS.",
     points: ["Online form filling", "Document upload & bundling", "Embassy protocols explained"],
     icon: IdCard,
   },

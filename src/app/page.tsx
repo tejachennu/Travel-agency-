@@ -6,6 +6,7 @@ import { Hero } from "@/components/home/Hero";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { IndiaDiaries } from "@/components/home/IndiaDiaries";
 import { InstagramFeed } from "@/components/home/InstagramFeed";
+import { LatestGuides } from "@/components/home/LatestGuides";
 import { InternationalGrid } from "@/components/home/InternationalGrid";
 import { Reels } from "@/components/home/Reels";
 import { Reviews } from "@/components/home/Reviews";
@@ -25,6 +26,7 @@ export default function HomePage() {
       <Reviews />
       <Reels />
       <HowItWorks />
+      <LatestGuides />
       <InstagramFeed />
       <FaqSection />
       <CtaBand />

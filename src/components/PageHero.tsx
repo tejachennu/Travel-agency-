@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ChevronRight } from "lucide-react";
+import { JsonLd } from "./JsonLd";
 import { cn } from "@/lib/cn";
-
-type Crumb = { href?: string; label: string };
+import { breadcrumbList, type Crumb } from "@/lib/schema";
 
 type Props = {
   eyebrow: string;
@@ -37,6 +37,7 @@ export function PageHero({ eyebrow, title, intro, image, crumbs, children, aside
 
       <div className={cn("container-page", aside && "grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]")}>
         <div>
+          {crumbs && <JsonLd data={breadcrumbList(crumbs)} />}
           {crumbs && (
             <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-1.5 text-sm text-white/60">
               {crumbs.map((c, i) => (

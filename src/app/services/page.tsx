@@ -9,11 +9,13 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { documentPromises, documentServices, travelServices } from "@/data/services";
 import { site } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
+import { JsonLd } from "@/components/JsonLd";
+import { serviceList } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Travel, Passport, Visa & OCI Services",
+  title: "Visa, Passport, OCI & Travel Services — Gandhinagar & Canada",
   description:
-    "Flight and hotel booking, customised tour packages, transfers and group tours — plus passport, visa, OCI, PCC and passport surrender services in India and Canada.",
+    "Flight & hotel booking, customised tour packages and visa help from our Gandhinagar office — plus OCI card, Indian PCC and passport surrender support for NRIs in Canada.",
   alternates: { canonical: "/services" },
 };
 
@@ -167,6 +169,9 @@ export default function ServicesPage() {
           </Reveal>
         </div>
       </section>
+
+      <JsonLd data={serviceList(travelServices, ["IN"])} />
+      <JsonLd data={serviceList(documentServices, ["IN", "CA"])} />
 
       <CtaBand title="Tell us what you need" body="A full holiday, a single flight or an OCI card — one message and our experts take it from there." />
     </>

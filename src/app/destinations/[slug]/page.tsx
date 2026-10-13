@@ -16,11 +16,48 @@ import { destinations, formatINR, getDestination } from "@/data/destinations";
 import { getPost, type InstagramPost } from "@/data/instagram";
 import { reviewsFor } from "@/data/reviews";
 import { whatsappLink } from "@/lib/whatsapp";
+import { BlogCard } from "@/components/blog/BlogCard";
+import { JsonLd } from "@/components/JsonLd";
+import { site } from "@/data/site";
+import { getPostsForDestination } from "@/lib/blog";
+import { faqPage, touristTrip } from "@/lib/schema";
 
 const reels: Record<string, { src: string; poster: string; caption: string }> = {
   kerala: { src: "/reels/kerala.mp4", poster: "/reels/kerala-poster.webp", caption: "Welcome to God's Own Country" },
   kashmir: { src: "/reels/kashmir.mp4", poster: "/reels/kashmir-poster.webp", caption: "The frozen beauty of Dal Lake" },
 };
+
+/** Where most travellers for this trip start — used in titles to match how people search. */
+function originFor(d: { slug: string; region: string }) {
+  if (d.slug === "punta-cana") return "from Canada";
+  if (d.slug === "statue-of-unity") return "from Ahmedabad & Gandhinagar";
+  return "from Ahmedabad";
+}
+
+const clip = (s: string, n: number) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…`);
+
+/** FAQs built only from facts already on the page, so they never drift from the itinerary. */
+function destinationFaqs(d: NonNullable<ReturnType<typeof getDestination>>) {
+  return [
+    {
+      q: d.region === "india" ? `Do I need any permit or visa for ${d.name}?` : `Do Indian passport holders need a visa for ${d.name}?`,
+      a: `${d.visa}${d.region === "international" ? " Rules change often, so we confirm the latest requirements before you book." : ""}`,
+    },
+    { q: `What is the best time to visit ${d.name}?`, a: `The best time to visit ${d.name} is ${d.bestTime}. We can still plan a great trip outside these months — just ask.` },
+    {
+      q: `How many days are enough for a ${d.name} trip?`,
+      a: `Our suggested ${d.name} itinerary is ${d.duration}, covering ${d.highlights.slice(0, 3).join(", ")}. We can shorten or extend it to suit your dates.`,
+    },
+    {
+      q: `What is included in the ${d.name} tour package?`,
+      a: `${d.inclusions.join("; ")}. Flights can be added from Ahmedabad, Mumbai or your nearest airport at the best available fare.`,
+    },
+    {
+      q: `Can I customise this ${d.name} package?`,
+      a: `Yes. Every MJ Holidays trip is tailor-made — change hotels, add or remove days and activities, or plan it as a honeymoon, family or group trip. Message us on WhatsApp at ${site.offices[0].phone} for a quote.`,
+    },
+  ];
+}
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -30,12 +67,14 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   const { slug } = await params;
   const d = getDestination(slug);
   if (!d) return {};
-  const title = `${d.name} Tour Package — ${d.duration}`;
+  const title = `${d.name} Tour Package ${originFor(d)} (${d.duration})`;
+  const description = clip(`${d.name} ${d.duration} tour package ${originFor(d)}: ${d.highlights.slice(0, 3).join(", ")}. ${d.price ? `From ${formatINR(d.price.amount)} pp. ` : ""}Customised by MJ Holidays, Gandhinagar.`, 158);
   return {
     title,
-    description: `${d.tagline}. ${d.summary}`,
+    description,
+    keywords: [`${d.name} tour package ${originFor(d)}`, `${d.name} tour package`, `${d.name} itinerary ${d.duration}`, `${d.name} trip from Gujarat`],
     alternates: { canonical: `/destinations/${d.slug}` },
-    openGraph: { title: `${title} · MJ Holidays`, description: d.summary },
+    openGraph: { title: `${title} | MJ Holidays`, description, url: `/destinations/${d.slug}` },
   };
 }
 
@@ -48,6 +87,8 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
   const travellerReviews = reviewsFor(d.slug);
   const related = destinations.filter((x) => x.region === d.region && x.slug !== d.slug).slice(0, 3);
   const reel = reels[d.slug];
+  const faqs = destinationFaqs(d);
+  const guides = getPostsForDestination(d.slug).slice(0, 3);
   const shape = { landscape: "aspect-[4/3]", portrait: "aspect-[4/5]", square: "aspect-square" }[d.imageShape ?? "landscape"];
   const enquiry = `Hi MJ Holidays! I'm interested in the ${d.name} trip (${d.duration}). Please share the itinerary and price.`;
 
@@ -247,6 +288,44 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
           </div>
         </div>
       </section>
+
+      <section className="bg-white py-20 sm:py-24">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <span className="eyebrow">Good to know</span>
+            <h2 className="mt-3 font-display text-4xl font-medium tracking-tight text-brand-900">{d.name} trip FAQs</h2>
+            <p className="mt-3 text-muted">Quick answers before you plan. Anything else — we&apos;re one WhatsApp message away.</p>
+          </div>
+          <div className="divide-y divide-sand-200 rounded-3xl bg-sand px-6">
+            {faqs.map((f) => (
+              <details key={f.q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                  <h3 className="text-lg font-semibold text-brand-900">{f.q}</h3>
+                  <span aria-hidden className="mt-1 text-xl leading-none text-teal-500 transition group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 leading-relaxed text-muted">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {guides.length > 0 && (
+        <section className="bg-sand py-20 sm:py-24">
+          <div className="container-page">
+            <span className="eyebrow">Travel guides</span>
+            <h2 className="mt-3 font-display text-4xl font-medium tracking-tight text-brand-900">Read before you go to {d.name}</h2>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {guides.map((g) => (
+                <BlogCard key={g.slug} post={g} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <JsonLd data={touristTrip(d)} />
+      <JsonLd data={faqPage(faqs)} />
 
       <CtaBand title={`Ready for ${d.name}?`} body="Share your dates and we'll send a personalised plan with the best fares and stays." />
     </>

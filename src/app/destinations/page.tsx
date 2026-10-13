@@ -5,7 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { destinations, indiaDestinations, internationalDestinations } from "@/data/destinations";
 
 export const metadata: Metadata = {
-  title: "Destinations & Tour Packages",
+  title: "Tour Packages from Ahmedabad — International & India Holidays",
   description:
     "Explore MJ Holidays tour packages to Dubai, Thailand, Singapore, Malaysia, Maldives, Bali, Vietnam, Hong Kong, Nepal, Bhutan and across India — Kerala, Kashmir, Spiti, Goa and more.",
   alternates: { canonical: "/destinations" },

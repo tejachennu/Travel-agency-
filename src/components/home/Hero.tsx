@@ -83,7 +83,7 @@ export function Hero() {
               <FlagIN size={14} />
               <FlagCA size={14} />
             </span>
-            Gandhinagar · Canada · Worldwide
+            Travel agency in Gandhinagar · Canada
           </motion.div>
 
           <h1 className="mt-7 font-display text-[3.1rem] leading-[0.98] font-medium tracking-tight sm:text-7xl xl:text-[5.6rem]">
