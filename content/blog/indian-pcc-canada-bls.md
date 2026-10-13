@@ -1,7 +1,7 @@
 ---
 title: "Indian PCC in Canada (2026): How to Get a Police Clearance Certificate Through BLS"
 seoTitle: "Indian PCC in Canada 2026: BLS Steps, Fees & Timelines"
-description: "Need an Indian Police Clearance Certificate for PR, citizenship or a job? How to apply through BLS in Canada, documents, CAD fees, timelines and which consulate covers you."
+description: "Need an Indian police clearance certificate for PR or a job? How to apply through BLS in Canada: documents, CAD fees, timelines and which consulate covers you."
 date: 2026-10-13
 category: visa-and-documents
 primaryKeyword: "indian pcc in canada"
