@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, Check } from "lucide-react";
 import { FlagCA, FlagIN } from "@/components/icons";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -16,7 +15,6 @@ const tabs = [
 
 export function ServicesTabs() {
   const [active, setActive] = useState<(typeof tabs)[number]["id"]>("travel");
-  const tab = tabs.find((t) => t.id === active)!;
 
   return (
     <section id="services" className="relative isolate overflow-hidden bg-brand-950 py-24 text-white sm:py-32">
@@ -51,34 +49,22 @@ export function ServicesTabs() {
                   active === t.id ? "text-brand-900" : "text-white/70 hover:text-white",
                 )}
               >
-                {active === t.id && (
-                  <motion.span layoutId="service-tab" className="absolute inset-0 rounded-full bg-white" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
-                )}
+                <span className={cn("absolute inset-0 rounded-full bg-white transition-all duration-300", active === t.id ? "scale-100 opacity-100" : "scale-90 opacity-0")} />
                 <span className="relative">{t.label}</span>
               </button>
             ))}
           </div>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={tab.id}
-            id={`panel-${tab.id}`}
-            role="tabpanel"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35 }}
-            className="mt-12"
-          >
+        {/* Both panels are rendered (inactive one hidden) so all services are in the page for search engines. */}
+        {tabs.map((tab) => (
+          <div key={tab.id} id={`panel-${tab.id}`} role="tabpanel" hidden={active !== tab.id} className="mt-12 animate-[fade-up_0.4s_ease-out]">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {tab.items.map((s, i) => (
-                <motion.article
+                <article
                   key={s.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
-                  className="group relative overflow-hidden rounded-3xl bg-white/[0.04] p-7 ring-1 ring-white/10 transition hover:bg-white/[0.07] hover:ring-teal-400/40"
+                  style={{ animationDelay: `${i * 50}ms` }}
+                  className="animate-[fade-up_0.4s_ease-out_both] group relative overflow-hidden rounded-3xl bg-white/[0.04] p-7 ring-1 ring-white/10 transition hover:bg-white/[0.07] hover:ring-teal-400/40"
                 >
                   <div className="absolute -top-16 -right-16 size-40 rounded-full bg-teal-400/0 blur-3xl transition group-hover:bg-teal-400/20" />
                   <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-teal-500 shadow-[0_10px_30px_-10px_rgb(0_161_155/0.8)]">
@@ -93,7 +79,7 @@ export function ServicesTabs() {
                       </li>
                     ))}
                   </ul>
-                </motion.article>
+                </article>
               ))}
             </div>
 
@@ -112,8 +98,8 @@ export function ServicesTabs() {
                 </div>
               </div>
             )}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
 
         <div className="mt-12 text-center">
           <Link href={active === "documents" ? "/services#documents" : "/services"} className="btn btn-light">

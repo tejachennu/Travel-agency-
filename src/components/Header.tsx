@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Mail, Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { FlagCA, FlagIN, InstagramIcon, WhatsAppIcon } from "./icons";
@@ -85,17 +84,14 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative rounded-full px-4 py-2 text-[0.92rem] font-medium transition-colors",
+                  "relative rounded-full px-3 py-2 text-[0.9rem] font-medium transition-colors xl:px-4",
                   solid ? "text-ink/75 hover:bg-brand-50 hover:text-brand-700" : "text-white/85 hover:bg-white/10 hover:text-white",
                   isActive(item.href) && (solid ? "text-brand-700" : "text-white"),
                 )}
               >
                 {item.label}
                 {isActive(item.href) && (
-                  <motion.span
-                    layoutId="nav-active"
-                    className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-brand-500 to-teal-400"
-                  />
+                  <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-brand-500 to-teal-400 xl:inset-x-4" />
                 )}
               </Link>
             ))}
@@ -128,24 +124,11 @@ export function Header() {
       </div>
 
       {/* Mobile sheet */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="h-[calc(100dvh-4.5rem)] overflow-y-auto bg-white lg:hidden"
-          >
+      {open && (
+          <div id="mobile-menu" className="h-[calc(100dvh-4.5rem)] animate-[fade-up_0.25s_ease-out] overflow-y-auto bg-white lg:hidden">
             <nav aria-label="Mobile" className="container-page flex flex-col gap-1 pt-4">
               {[{ href: "/", label: "Home" }, ...nav].map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.04 * i }}
-                >
+                <div key={item.href} className="animate-[fade-up_0.35s_ease-out_both]" style={{ animationDelay: `${i * 40}ms` }}>
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
@@ -154,7 +137,7 @@ export function Header() {
                     {item.label}
                     <ArrowUpRight className="size-5 text-teal-500" />
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </nav>
             <div className="container-page mt-8 space-y-3 pb-10">
@@ -172,9 +155,8 @@ export function Header() {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </header>
   );
 }

@@ -12,11 +12,13 @@ import { Reels } from "@/components/home/Reels";
 import { Reviews } from "@/components/home/Reviews";
 import { ServicesTabs } from "@/components/home/ServicesTabs";
 import { WhyUs } from "@/components/home/WhyUs";
+import { destinations } from "@/data/destinations";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* Only names cross to the client — not the whole destinations data file. */}
+      <Hero destinationOptions={destinations.map((d) => ({ name: d.name, region: d.region }))} />
       <DestinationMarquee />
       <WhyUs />
       <InternationalGrid />

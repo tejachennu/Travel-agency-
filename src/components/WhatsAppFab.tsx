@@ -1,20 +1,14 @@
-"use client";
-
-import { motion } from "motion/react";
 import { WhatsAppIcon } from "./icons";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
 export function WhatsAppFab() {
   return (
-    <motion.a
+    <a
       href={whatsappLink(defaultEnquiry)}
       target="_blank"
       rel="noreferrer"
       aria-label="Chat with MJ Holidays on WhatsApp"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1.2, type: "spring", stiffness: 260, damping: 18 }}
-      className="group fixed right-4 bottom-4 z-40 flex items-center gap-3 sm:right-6 sm:bottom-6"
+      className="group fixed right-4 bottom-4 z-40 flex animate-[fab-in_0.5s_cubic-bezier(0.34,1.56,0.64,1)_1.2s_both] items-center gap-3 sm:right-6 sm:bottom-6"
     >
       <span className="pointer-events-none hidden translate-x-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink opacity-0 shadow-lift transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
         Chat with us
@@ -23,6 +17,6 @@ export function WhatsAppFab() {
         <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30 [animation-duration:2.4s]" />
         <WhatsAppIcon size={28} className="relative" />
       </span>
-    </motion.a>
+    </a>
   );
 }

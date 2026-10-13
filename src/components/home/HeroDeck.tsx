@@ -463,7 +463,7 @@ const DeckCard = memo(function DeckCard({ index, slide, values, isTop, isFront, 
               draggable={false}
               loading="eager" // all six are in the deck already, so none pops in mid-swipe
               fetchPriority={index === 0 ? "high" : "low"}
-              sizes="(min-width: 1024px) 400px, 80vw"
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 315px, 290px"
               className="pointer-events-none object-cover"
             />
           </Link>

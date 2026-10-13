@@ -1,10 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { CheckCircle2, Mail } from "lucide-react";
 import { WhatsAppIcon } from "./icons";
-import { destinations } from "@/data/destinations";
 import { site } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
@@ -15,7 +13,7 @@ const input =
   "w-full rounded-xl border border-sand-200 bg-sand/50 px-4 py-3.5 text-[0.95rem] text-ink outline-none transition placeholder:text-ink/40 focus:border-teal-400 focus:bg-white focus:ring-4 focus:ring-teal-400/15";
 const label = "mb-1.5 block text-sm font-semibold text-brand-900";
 
-export function ContactForm() {
+export function ContactForm({ destinationNames }: { destinationNames: string[] }) {
   const [need, setNeed] = useState(needs[0]);
   const [sent, setSent] = useState<null | "whatsapp" | "email">(null);
   const [form, setForm] = useState({ name: "", phone: "", email: "", destination: "", dates: "", travellers: "2", message: "" });
@@ -90,8 +88,8 @@ export function ContactForm() {
           <span className={label}>Destination</span>
           <input className={input} list="destination-options" value={form.destination} onChange={set("destination")} placeholder="Dubai, Bali, Kerala…" />
           <datalist id="destination-options">
-            {destinations.map((d) => (
-              <option key={d.slug} value={d.name} />
+            {destinationNames.map((name) => (
+              <option key={name} value={name} />
             ))}
           </datalist>
         </label>
@@ -118,20 +116,15 @@ export function ContactForm() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {sent && (
-          <motion.p
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
+      {sent && (
+          <p
             role="status"
-            className="mt-5 flex items-center gap-2 rounded-xl bg-teal-50 px-4 py-3 text-sm text-teal-700"
+            className="animate-[fade-up_0.3s_ease-out] mt-5 flex items-center gap-2 rounded-xl bg-teal-50 px-4 py-3 text-sm text-teal-700"
           >
             <CheckCircle2 className="size-4 shrink-0" />
             {sent === "whatsapp" ? "WhatsApp opened with your details — just hit send." : "Your email app opened with your details — just hit send."}
-          </motion.p>
+          </p>
         )}
-      </AnimatePresence>
     </form>
   );
 }

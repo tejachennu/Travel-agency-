@@ -5,6 +5,7 @@ import { FlagCA, FlagIN, InstagramIcon, WhatsAppIcon } from "@/components/icons"
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/data/site";
+import { destinations } from "@/data/destinations";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
@@ -45,7 +46,7 @@ export default function ContactPage() {
       <section className="bg-sand py-16 sm:py-24">
         <div className="container-page grid gap-10 lg:grid-cols-[1.25fr_1fr]">
           <Reveal>
-            <ContactForm />
+            <ContactForm destinationNames={destinations.map((d) => d.name)} />
           </Reveal>
 
           <div className="space-y-5">

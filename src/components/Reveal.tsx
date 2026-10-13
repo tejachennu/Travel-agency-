@@ -1,20 +1,14 @@
-"use client";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
-import { motion, type HTMLMotionProps } from "motion/react";
-
-type RevealProps = HTMLMotionProps<"div"> & { delay?: number; y?: number };
-
-/** Fades and lifts its children into view once, as they scroll into the viewport. */
-export function Reveal({ delay = 0, y = 28, children, ...rest }: RevealProps) {
+/**
+ * Fades and lifts its children in as they scroll into view — pure CSS (scroll-driven
+ * animations), so it costs no JavaScript. Browsers without support simply show the content.
+ */
+export function Reveal({ delay = 0, className, children }: { delay?: number; className?: string; children: ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      {...rest}
-    >
+    <div className={cn("reveal", className)} style={delay ? ({ "--reveal-delay": delay } as React.CSSProperties) : undefined}>
       {children}
-    </motion.div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Caveat, Fraunces, Plus_Jakarta_Sans } from "next/font/google";
-import { Providers } from "@/components/Providers";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -64,12 +63,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <Providers>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <WhatsAppFab />
-        </Providers>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <WhatsAppFab />
       </body>
     </html>
   );

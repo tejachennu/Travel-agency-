@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 import { DestinationCard } from "./DestinationCard";
 import { DiaryCard } from "./DiaryCard";
 import type { Destination, Region } from "@/data/destinations";
@@ -40,13 +39,12 @@ export function DestinationExplorer({ destinations }: { destinations: Destinatio
                   filter === f.id ? "text-white" : "text-muted hover:text-brand-700",
                 )}
               >
-                {filter === f.id && (
-                  <motion.span
-                    layoutId="dest-filter"
-                    className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-600 to-teal-500"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
+                <span
+                  className={cn(
+                    "absolute inset-0 rounded-full bg-gradient-to-r from-brand-600 to-teal-500 transition-all duration-300",
+                    filter === f.id ? "scale-100 opacity-100" : "scale-90 opacity-0",
+                  )}
+                />
                 <span className="relative">
                   {f.label} <span className="opacity-60">({count})</span>
                 </span>
@@ -57,15 +55,7 @@ export function DestinationExplorer({ destinations }: { destinations: Destinatio
         <p className="text-sm text-muted">Every itinerary is fully customisable.</p>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={filter}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-          className="space-y-16"
-        >
+      <div key={filter} className="animate-[fade-up_0.35s_ease-out] space-y-16">
           {visible.map((g) => {
             const items = destinations.filter((d) => d.region === g.id);
             return (
@@ -95,8 +85,7 @@ export function DestinationExplorer({ destinations }: { destinations: Destinatio
               </div>
             );
           })}
-        </motion.div>
-      </AnimatePresence>
+      </div>
     </div>
   );
 }

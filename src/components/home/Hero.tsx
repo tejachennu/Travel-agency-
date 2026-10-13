@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, motionValue, useMotionValueEvent, type MotionValue } from "motion/react";
 import { ArrowRight, Headphones, Star } from "lucide-react";
 import { FlagCA, FlagIN, WhatsAppIcon } from "@/components/icons";
-import { EnquiryBar } from "./EnquiryBar";
+import { EnquiryBar, type DestinationOption } from "./EnquiryBar";
 import { HeroDeck, type DeckSlide } from "./HeroDeck";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
 
@@ -19,12 +19,10 @@ const slides: DeckSlide[] = [
   { src: "/images/destinations/vietnam.webp", name: "Vietnam", note: "The Golden Bridge", slug: "vietnam" },
 ];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 // Delay the backdrop crossfade until the swipe has had its first frames to itself.
 const BACKDROP_DELAY_MS = 350;
 
-export function Hero() {
+export function Hero({ destinationOptions }: { destinationOptions: DestinationOption[] }) {
   // The deck owns the gestures and writes the front card here; only the backdrop listens.
   const [active] = useState(() => motionValue(0));
 
@@ -73,76 +71,41 @@ export function Hero() {
       <div className="container-page relative grid items-center gap-14 pt-32 sm:pt-40 lg:grid-cols-12 lg:gap-8 lg:pt-44">
         {/* Copy */}
         <div className="lg:col-span-7">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-3 rounded-full bg-white/[0.07] py-1.5 pr-4 pl-1.5 text-sm text-white/80 ring-1 ring-white/15 backdrop-blur"
-          >
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/[0.07] py-1.5 pr-4 pl-1.5 text-sm text-white/80 ring-1 ring-white/15 backdrop-blur hero-in">
             <span className="flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1">
               <FlagIN size={14} />
               <FlagCA size={14} />
             </span>
             Travel agency in Gandhinagar · Canada
-          </motion.div>
+          </div>
 
           <h1 className="mt-7 font-display text-[3.1rem] leading-[0.98] font-medium tracking-tight sm:text-7xl xl:text-[5.6rem]">
-            <motion.span
-              className="block"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease }}
-            >
+            <span className="block hero-in" style={{ animationDelay: "0.1s" }}>
               Discover your
-            </motion.span>
-            <motion.span
-              className="block"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease }}
-            >
+            </span>
+            <span className="block hero-in" style={{ animationDelay: "0.2s" }}>
               <em className="text-gradient-light pr-2 font-normal">world,</em>
-            </motion.span>
-            <motion.span
-              className="block text-white/90"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease }}
-            >
+            </span>
+            <span className="block text-white/90 hero-in" style={{ animationDelay: "0.3s" }}>
               perfectly planned.
-            </motion.span>
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease }}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-white/75"
-          >
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/75 hero-in" style={{ animationDelay: "0.45s" }}>
             From Bali pool villas to Kerala houseboats — we plan tailor-made holidays, book your flights and hotels, and
             take care of passport, visa &amp; OCI paperwork. One team, from the first idea to the final stamp.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.55, ease }}
-            className="mt-9 flex flex-wrap gap-3"
-          >
+          <div className="mt-9 flex flex-wrap gap-3 hero-in" style={{ animationDelay: "0.55s" }}>
             <a href={whatsappLink(defaultEnquiry)} target="_blank" rel="noreferrer" className="btn btn-primary">
               <WhatsAppIcon size={18} /> Plan my trip
             </a>
             <Link href="/destinations" className="btn btn-ghost-light">
               Explore destinations <ArrowRight className="size-4" />
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-white/70"
-          >
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-white/70 hero-in" style={{ animationDelay: "0.75s" }}>
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 {["R", "K", "A", "P"].map((l, i) => (
@@ -167,7 +130,7 @@ export function Hero() {
             <div className="flex items-center gap-2">
               <Headphones className="size-5 text-teal-300" /> 24/7 support on WhatsApp
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Swipeable postcard deck */}
@@ -175,7 +138,7 @@ export function Hero() {
       </div>
 
       <div className="container-page relative mt-16 lg:mt-20">
-        <EnquiryBar />
+        <EnquiryBar options={destinationOptions} />
       </div>
     </section>
   );

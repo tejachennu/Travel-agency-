@@ -3,7 +3,6 @@
 import { useState, type FormEvent } from "react";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons";
-import { destinations } from "@/data/destinations";
 import { whatsappLink } from "@/lib/whatsapp";
 
 // Plain month names keep the statically rendered markup stable whatever the build date.
@@ -11,7 +10,9 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 const travellerOptions = ["1 traveller", "2 travellers", "3 travellers", "4 travellers", "5 travellers", "6–10 travellers", "10+ (group)"];
 
-export function EnquiryBar() {
+export type DestinationOption = { name: string; region: "international" | "india" };
+
+export function EnquiryBar({ options }: { options: DestinationOption[] }) {
   const [destination, setDestination] = useState("");
   const [month, setMonth] = useState("");
   const [travellers, setTravellers] = useState(travellerOptions[1]);
@@ -39,19 +40,19 @@ export function EnquiryBar() {
           <select value={destination} onChange={(e) => setDestination(e.target.value)} className={field}>
             <option value="">Anywhere — inspire me</option>
             <optgroup label="International">
-              {destinations
+              {options
                 .filter((d) => d.region === "international")
                 .map((d) => (
-                  <option key={d.slug} value={d.name}>
+                  <option key={d.name} value={d.name}>
                     {d.name}
                   </option>
                 ))}
             </optgroup>
             <optgroup label="India">
-              {destinations
+              {options
                 .filter((d) => d.region === "india")
                 .map((d) => (
-                  <option key={d.slug} value={d.name}>
+                  <option key={d.name} value={d.name}>
                     {d.name}
                   </option>
                 ))}
