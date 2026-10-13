@@ -11,11 +11,12 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { getPost, type InstagramPost } from "@/data/instagram";
 import { reviews } from "@/data/reviews";
 import { site } from "@/data/site";
+import { pageTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About MJ Holidays — Travel Agency in Kudasan, Gandhinagar",
+  title: pageTitle("About MJ Holidays — Travel Agency in Kudasan, Gandhinagar"),
   description:
-    "MJ Holidays is a travel company from Kudasan, Gandhinagar with an office in Chester, Canada — creating unforgettable travel stories with tailor-made holidays and end-to-end travel paperwork.",
+    "MJ Holidays is a travel company in Kudasan, Gandhinagar with an office in Chester, Canada: tailor-made holidays, flights, visas and travel paperwork.",
   alternates: { canonical: "/about" },
 };
 

@@ -21,6 +21,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/data/site";
 import { getPostsForDestination } from "@/lib/blog";
 import { faqPage, touristTrip } from "@/lib/schema";
+import { pageTitle } from "@/lib/seo";
 
 const reels: Record<string, { src: string; poster: string; caption: string }> = {
   kerala: { src: "/reels/kerala.mp4", poster: "/reels/kerala-poster.webp", caption: "Welcome to God's Own Country" },
@@ -68,9 +69,10 @@ export async function generateMetadata({ params }: PageProps<"/destinations/[slu
   const d = getDestination(slug);
   if (!d) return {};
   const title = `${d.name} Tour Package ${originFor(d)} (${d.duration})`;
+  const shortTitle = `${d.name} Tour Package ${originFor(d).split(" & ")[0]} (${d.duration})`;
   const description = clip(`${d.name} ${d.duration} tour package ${originFor(d)}: ${d.highlights.slice(0, 3).join(", ")}. ${d.price ? `From ${formatINR(d.price.amount)} pp. ` : ""}Customised by MJ Holidays, Gandhinagar.`, 158);
   return {
-    title,
+    title: pageTitle(title.length > 60 ? shortTitle : title),
     description,
     keywords: [`${d.name} tour package ${originFor(d)}`, `${d.name} tour package`, `${d.name} itinerary ${d.duration}`, `${d.name} trip from Gujarat`],
     alternates: { canonical: `/destinations/${d.slug}` },

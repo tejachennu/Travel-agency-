@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     q: "I live in Canada. Can you help with my OCI, PCC or passport surrender?",
-    a: "Yes. As a BLS services partner we handle OCI applications, Police Clearance Certificates and passport surrender end to end — forms, photos, uploads, appointments and even Purolator pickup and drop to BLS and IRCC Ottawa.",
+    a: "Yes. As a BLS services partner we handle OCI applications, Police Clearance Certificates and passport surrender — forms, photos, uploads and appointments, plus Purolator pickup and drop where documents can go by courier. OCI applications now need one in-person biometrics visit to BLS, and we prepare everything so it takes one trip.",
   },
   {
     q: "How do I book and pay?",

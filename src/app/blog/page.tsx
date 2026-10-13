@@ -6,11 +6,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { categories, getAllPosts } from "@/lib/blog";
 import { abs, ids } from "@/lib/schema";
+import { pageTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Travel Guides, Itineraries & Visa Tips for Indian Travellers",
+  title: pageTitle("Travel Guides, Itineraries & Visa Tips"),
   description:
-    "Free travel guides from MJ Holidays, Gandhinagar: day-by-day itineraries, visa rules for Indian passport holders, OCI and PCC help for NRIs in Canada, and trip costs from Ahmedabad.",
+    "Free travel guides from MJ Holidays: day-by-day itineraries, visa rules for Indian passport holders, OCI and PCC help for NRIs in Canada, and trip tips.",
   alternates: { canonical: "/blog", types: { "application/rss+xml": "/blog/rss.xml" } },
 };
 

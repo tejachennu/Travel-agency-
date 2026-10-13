@@ -7,11 +7,12 @@ import { Reveal } from "@/components/Reveal";
 import { site } from "@/data/site";
 import { destinations } from "@/data/destinations";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
+import { pageTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact MJ Holidays — Travel Agent in Kudasan, Gandhinagar",
+  title: pageTitle("Contact MJ Holidays — Travel Agent in Kudasan, Gandhinagar"),
   description:
-    "Talk with MJ Holidays travel experts — B-326, Pramukh Arcade, Kudasan, Gandhinagar (+91 97129 83753) and Chester, Nova Scotia, Canada (+1 647 552 3753). info@mjholidays.in",
+    "Visit or call MJ Holidays: B-326 Pramukh Arcade, Kudasan, Gandhinagar (+91 97129 83753) or Chester, Nova Scotia (+1 647 552 3753). WhatsApp us anytime.",
   alternates: { canonical: "/contact" },
 };
 

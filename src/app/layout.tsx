@@ -14,9 +14,9 @@ const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", dis
 // Handwritten accents only — one weight, and not worth delaying first paint for.
 const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat", display: "swap", weight: "500", preload: false });
 
-const title = "MJ Holidays — Travel Agency in Gandhinagar | Tour Packages, Flights & Visas";
+const title = "MJ Holidays | Travel Agency in Gandhinagar, Tours & Visas";
 const description =
-  "Travel agency in Kudasan, Gandhinagar with an office in Canada. Customised tour packages from Ahmedabad to Dubai, Bali, Thailand, Kerala & more, plus flights, hotels, visas and OCI help.";
+  "Travel agency in Kudasan, Gandhinagar and Canada. Tour packages from Ahmedabad to Dubai, Bali, Thailand, Kerala and more, plus flights, visas and OCI help.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

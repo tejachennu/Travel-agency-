@@ -14,6 +14,7 @@ import { site } from "@/data/site";
 import { formatDate, getAllPosts, getCategory, getPost, getRelatedPosts } from "@/lib/blog";
 import { abs, faqPage, ids } from "@/lib/schema";
 import { whatsappLink } from "@/lib/whatsapp";
+import { pageTitle } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   if (!post) return {};
   const { meta } = post;
   return {
-    title: { absolute: meta.seoTitle.includes("MJ Holidays") ? meta.seoTitle : `${meta.seoTitle} | MJ Holidays` },
+    title: pageTitle(meta.seoTitle),
     description: meta.description,
     keywords: [meta.primaryKeyword, ...meta.tags].filter(Boolean) as string[],
     alternates: { canonical: `/blog/${meta.slug}` },

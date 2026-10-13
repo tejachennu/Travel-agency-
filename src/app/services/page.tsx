@@ -11,11 +11,12 @@ import { site } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
 import { JsonLd } from "@/components/JsonLd";
 import { serviceList } from "@/lib/schema";
+import { pageTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Visa, Passport, OCI & Travel Services — Gandhinagar & Canada",
+  title: pageTitle("Visa, Passport, OCI & Travel Services — Gandhinagar & Canada"),
   description:
-    "Flight & hotel booking, customised tour packages and visa help from our Gandhinagar office — plus OCI card, Indian PCC and passport surrender support for NRIs in Canada.",
+    "Flights, hotels, tour packages and visa help from our Gandhinagar office, plus OCI card, Indian PCC and passport surrender support for NRIs in Canada.",
   alternates: { canonical: "/services" },
 };
 

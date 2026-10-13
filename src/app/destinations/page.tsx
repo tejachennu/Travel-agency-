@@ -3,11 +3,12 @@ import { CtaBand } from "@/components/CtaBand";
 import { DestinationExplorer } from "@/components/DestinationExplorer";
 import { PageHero } from "@/components/PageHero";
 import { destinations, indiaDestinations, internationalDestinations } from "@/data/destinations";
+import { pageTitle } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Tour Packages from Ahmedabad — International & India Holidays",
+  title: pageTitle("Tour Packages from Ahmedabad & Gandhinagar"),
   description:
-    "Explore MJ Holidays tour packages to Dubai, Thailand, Singapore, Malaysia, Maldives, Bali, Vietnam, Hong Kong, Nepal, Bhutan and across India — Kerala, Kashmir, Spiti, Goa and more.",
+    "Customised tour packages from Ahmedabad to Dubai, Thailand, Singapore, Maldives, Bali, Vietnam, Bhutan and Nepal, plus Kerala, Kashmir, Spiti and Goa.",
   alternates: { canonical: "/destinations" },
 };
 
