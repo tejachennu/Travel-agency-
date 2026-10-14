@@ -37,12 +37,18 @@ export function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-transform duration-300",
+        // The desktop utility bar slides away with a transform: collapsing its height would re-layout every frame.
+        solid && "md:-translate-y-9",
+      )}
+    >
       {/* Utility bar */}
       <div
         className={cn(
-          "hidden overflow-hidden bg-brand-950/60 text-[0.78rem] text-white/80 backdrop-blur transition-all duration-300 md:block",
-          solid ? "max-h-0 opacity-0" : "max-h-10 opacity-100",
+          "hidden bg-brand-950/60 text-[0.78rem] text-white/80 transition-opacity duration-300 md:block",
+          solid ? "pointer-events-none opacity-0" : "opacity-100",
         )}
       >
         <div className="container-page flex h-9 items-center justify-between">
@@ -71,8 +77,9 @@ export function Header() {
       {/* Main bar */}
       <div
         className={cn(
-          "transition-all duration-300",
-          solid ? "bg-white/85 shadow-[0_1px_0_rgb(13_17_48/0.06)] backdrop-blur-xl" : "bg-transparent",
+          "transition-[background-color,box-shadow] duration-300",
+          // Near-opaque instead of backdrop-blur: a blurred sticky bar re-blurs the page under it on every scroll frame.
+          solid ? "bg-white/95 shadow-[0_1px_0_rgb(13_17_48/0.06)]" : "bg-transparent",
         )}
       >
         <div className="container-page flex h-[4.5rem] items-center justify-between gap-6">
@@ -114,7 +121,7 @@ export function Header() {
               aria-label={open ? "Close menu" : "Open menu"}
               className={cn(
                 "grid size-11 place-items-center rounded-full transition-colors lg:hidden",
-                solid ? "bg-brand-50 text-brand-700" : "bg-white/10 text-white backdrop-blur",
+                solid ? "bg-brand-50 text-brand-700" : "bg-white/15 text-white",
               )}
             >
               {open ? <X className="size-5" /> : <Menu className="size-5" />}

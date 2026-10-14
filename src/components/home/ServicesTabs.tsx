@@ -18,7 +18,7 @@ export function ServicesTabs() {
 
   return (
     <section id="services" className="relative isolate overflow-hidden bg-brand-950 py-24 text-white sm:py-32">
-      <div className="absolute top-0 left-1/2 -z-10 h-[30rem] w-[70rem] -translate-x-1/2 rounded-full bg-brand-600/30 blur-[130px]" />
+      <div className="absolute top-0 left-1/2 -z-10 h-[30rem] w-[70rem] -translate-x-1/2 glow text-brand-600/30" />
       <div className="dot-grid absolute inset-0 -z-10 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
 
       <div className="container-page">
@@ -66,7 +66,7 @@ export function ServicesTabs() {
                   style={{ animationDelay: `${i * 50}ms` }}
                   className="animate-[fade-up_0.4s_ease-out_both] group relative overflow-hidden rounded-3xl bg-white/[0.04] p-7 ring-1 ring-white/10 transition hover:bg-white/[0.07] hover:ring-teal-400/40"
                 >
-                  <div className="absolute -top-16 -right-16 size-40 rounded-full bg-teal-400/0 blur-3xl transition group-hover:bg-teal-400/20" />
+                  <div className="absolute -top-16 -right-16 size-40 glow text-teal-400/0 transition-colors group-hover:text-teal-400/20" />
                   <span className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-teal-500 shadow-[0_10px_30px_-10px_rgb(0_161_155/0.8)]">
                     <s.icon className="size-6" />
                   </span>

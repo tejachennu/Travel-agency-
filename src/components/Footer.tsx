@@ -19,7 +19,7 @@ const explore = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-brand-950 text-white/70">
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-teal-500/20 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 glow text-teal-500/20" />
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
 
       <div className="container-page relative pt-20 pb-10">

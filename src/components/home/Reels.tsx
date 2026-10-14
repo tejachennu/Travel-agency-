@@ -9,7 +9,7 @@ export function Reels() {
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-teal-700 py-24 text-white sm:py-32">
       <div className="dot-grid absolute inset-0 -z-10 opacity-40" />
-      <div className="absolute -bottom-40 -left-20 -z-10 size-[30rem] rounded-full bg-teal-400/30 blur-[120px]" />
+      <div className="absolute -bottom-40 -left-20 -z-10 size-[30rem] glow text-teal-400/30" />
 
       <div className="container-page grid items-center gap-16 lg:grid-cols-2">
         <Reveal>

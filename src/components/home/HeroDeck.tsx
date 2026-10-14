@@ -19,7 +19,6 @@ import {
   useDragControls,
   useReducedMotion,
   useTransform,
-  type AnimationPlaybackControls,
   type MotionValue,
   type PanInfo,
 } from "motion/react";
@@ -27,7 +26,8 @@ import { BadgeCheck, ChevronLeft, ChevronRight, MoveHorizontal, PlaneTakeoff } f
 import { cn } from "@/lib/cn";
 
 export type DeckSlide = { src: string; name: string; note: string; slug: string };
-type PauseReason = "hover" | "focus" | "drag";
+// "offscreen" and "hidden" stop the deck working while nobody can see it, so it never competes with scrolling.
+type PauseReason = "hover" | "focus" | "drag" | "offscreen" | "hidden";
 type Pose = { x: number; y: number; rotate: number; scale: number; opacity: number };
 
 // Resting pose of each visible card, front (0) to back (2). The others wait, invisible, behind the deck.
@@ -95,17 +95,19 @@ export function HeroDeck({ slides, active }: Props) {
   const [paused, setPaused] = useState(false);
 
   const [cards] = useState(() => slides.map((_, i) => createCard(i, slides.length)));
-  const [progress] = useState(() => motionValue(0)); // autoplay progress for the active dot
+  const rootRef = useRef<HTMLDivElement>(null);
+  // Autoplay progress bars, animated with the Web Animations API so they run on the compositor, not in JS each frame.
+  const barRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const barAnim = useRef<Animation | null>(null);
   const indexRef = useRef(0);
   const flying = useRef(new Set<number>());
   const throwIds = useRef(slides.map(() => 0));
-  const pauses = useRef<Record<PauseReason, boolean>>({ hover: false, focus: false, drag: false });
+  const pauses = useRef<Record<PauseReason, boolean>>({ hover: false, focus: false, drag: false, offscreen: false, hidden: false });
   const timer = useRef<number | undefined>(undefined);
-  const progressAnim = useRef<AnimationPlaybackControls | null>(null);
   const reduceRef = useRef(reduceMotion);
   const nextRef = useRef<(velocity?: number) => void>(() => {});
 
-  const isPaused = () => pauses.current.hover || pauses.current.focus || pauses.current.drag;
+  const isPaused = () => Object.values(pauses.current).some(Boolean);
 
   /** Send every card to the pose for its depth on the shared spring. */
   const settle = useCallback(() => {
@@ -126,15 +128,17 @@ export function HeroDeck({ slides, active }: Props) {
   /** Restart (or stop) the autoplay timer and its progress bar. */
   const schedule = useCallback(() => {
     window.clearTimeout(timer.current);
-    progressAnim.current?.stop();
+    barAnim.current?.cancel();
+    const bar = barRefs.current[indexRef.current];
     if (isPaused() || reduceRef.current) {
-      progress.set(1);
+      if (bar) bar.style.transform = "none";
       return;
     }
-    progress.set(0);
-    progressAnim.current = animate(progress, 1, { duration: AUTOPLAY_MS / 1000, ease: "linear" });
+    barAnim.current =
+      bar?.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: AUTOPLAY_MS, easing: "linear", fill: "forwards" }) ??
+      null;
     timer.current = window.setTimeout(() => nextRef.current(-700), AUTOPLAY_MS);
-  }, [progress]);
+  }, []);
 
   const commit = useCallback(
     (i: number) => {
@@ -225,9 +229,22 @@ export function HeroDeck({ slides, active }: Props) {
     schedule();
     return () => {
       window.clearTimeout(timer.current);
-      progressAnim.current?.stop();
+      barAnim.current?.cancel();
     };
   }, [reduceMotion, schedule]);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setPause("offscreen", !entry.isIntersecting));
+    io.observe(el);
+    const onVisibility = () => setPause("hidden", document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [setPause]);
 
   const onDrag = useCallback(
     (info: PanInfo) => {
@@ -263,6 +280,7 @@ export function HeroDeck({ slides, active }: Props) {
 
   return (
     <div
+      ref={rootRef}
       role="group"
       aria-roledescription="carousel"
       aria-label="Featured destinations"
@@ -334,13 +352,16 @@ export function HeroDeck({ slides, active }: Props) {
               className="relative h-1.5 overflow-hidden rounded-full bg-white/20 transition-[width] duration-300"
               style={{ width: i === index ? 36 : 12 }}
             >
-              {i === index && (
-                // scaleX runs on the compositor; animating width would re-layout every frame.
-                <motion.span
-                  className="absolute inset-0 origin-left rounded-full bg-gradient-to-r from-brand-300 to-teal-300"
-                  style={{ scaleX: progress }}
-                />
-              )}
+              <span
+                ref={(el) => {
+                  barRefs.current[i] = el;
+                }}
+                className={cn(
+                  "absolute inset-0 origin-left rounded-full bg-gradient-to-r from-brand-300 to-teal-300",
+                  i !== index && "invisible",
+                )}
+                style={{ transform: "scaleX(0)" }}
+              />
             </button>
           ))}
         </div>
@@ -354,7 +375,7 @@ export function HeroDeck({ slides, active }: Props) {
         </button>
       </div>
       <p className="mt-4 flex items-center justify-center gap-2 text-xs font-medium tracking-wide text-white/55">
-        <MoveHorizontal className="size-4 animate-[nudge_2.4s_ease-in-out_infinite]" aria-hidden />
+        <MoveHorizontal className="size-4 animate-[nudge_2.4s_ease-in-out_4]" aria-hidden />
         <span className="sm:hidden">Swipe the cards to explore</span>
         <span className="hidden sm:inline">Drag the cards or use the arrows</span>
       </p>

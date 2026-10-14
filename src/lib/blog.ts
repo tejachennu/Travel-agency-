@@ -5,6 +5,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { Marked, type RendererObject } from "marked";
 import imageDims from "@/data/image-dims.json";
+import { blurSrc } from "@/lib/blur";
 
 export const BLOG_DIR = path.join(process.cwd(), "content/blog");
 
@@ -121,6 +122,9 @@ function readPost(file: string): Post {
   const cover = requireField(file, "cover", data.cover) as string;
   if (!fs.existsSync(path.join(process.cwd(), "public", cover))) {
     throw new Error(`Blog post ${file} cover image not found: ${cover}`);
+  }
+  if (!fs.existsSync(path.join(process.cwd(), "public", blurSrc(cover)))) {
+    throw new Error(`Blog post ${file}: no blurred backdrop for ${cover} — run \`npm run images:dims\``);
   }
   const words = content.split(/\s+/).filter(Boolean).length;
   const { html, toc } = render(content);

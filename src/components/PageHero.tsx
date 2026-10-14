@@ -5,6 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { JsonLd } from "./JsonLd";
 import { cn } from "@/lib/cn";
 import { breadcrumbList, type Crumb } from "@/lib/schema";
+import { blurSrc } from "@/lib/blur";
 
 type Props = {
   eyebrow: string;
@@ -22,11 +23,11 @@ export function PageHero({ eyebrow, title, intro, image, crumbs, children, aside
   return (
     <section className={cn("relative isolate overflow-hidden bg-brand-950 pt-36 pb-20 text-white sm:pt-44 sm:pb-28", className)}>
       {image && (
-        <Image src={image} alt="" fill loading="eager" sizes="96px" className="-z-20 scale-110 object-cover opacity-45 blur-2xl" />
+        <Image src={blurSrc(image)} alt="" fill unoptimized loading="eager" className="-z-20 scale-110 object-cover opacity-45" />
       )}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/60 via-brand-950/80 to-brand-950" />
-      <div className="absolute -top-32 -left-32 -z-10 size-[34rem] animate-aurora rounded-full bg-brand-600/40 blur-[120px]" />
-      <div className="absolute -right-32 -bottom-40 -z-10 size-[30rem] animate-aurora rounded-full bg-teal-500/25 blur-[120px] [animation-delay:-8s]" />
+      <div className="absolute -top-32 -left-32 -z-10 size-[34rem] glow text-brand-600/40" />
+      <div className="absolute -right-32 -bottom-40 -z-10 size-[30rem] glow text-teal-500/25" />
       <div className="dot-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
       <div className="grain absolute inset-0 -z-10" />
       {!aside && (

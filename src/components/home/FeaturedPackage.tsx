@@ -5,6 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/icons";
 import { formatINR, getDestination } from "@/data/destinations";
 import { whatsappLink } from "@/lib/whatsapp";
+import { blurSrc } from "@/lib/blur";
 
 const stays = [
   { nights: "5N", hotel: "Fairfield by Marriott Bali Legian", room: "Deluxe Room" },
@@ -29,19 +30,19 @@ export function FeaturedPackage() {
     <section className="bg-sand pb-24 sm:pb-32">
       <div className="container-page">
         <Reveal className="relative overflow-hidden rounded-[2.25rem] bg-brand-950 text-white shadow-lift">
-          <div className="absolute -top-32 -right-24 size-[28rem] rounded-full bg-coral/25 blur-[110px]" />
-          <div className="absolute -bottom-40 left-1/3 size-[26rem] rounded-full bg-teal-500/20 blur-[110px]" />
+          <div className="absolute -top-32 -right-24 size-[28rem] glow text-coral/25" />
+          <div className="absolute -bottom-40 left-1/3 size-[26rem] glow text-teal-500/20" />
 
           <div className="relative grid lg:grid-cols-[1.05fr_1fr]">
             {/* Visual */}
             <div className="relative isolate flex min-h-[30rem] items-center justify-center overflow-hidden px-6 pt-20 pb-12 sm:min-h-[36rem]">
               {/* Soft, blurred backdrop so resolution never shows */}
               <Image
-                src="/images/destinations/bali.webp"
+                src={blurSrc("/images/destinations/bali.webp")}
                 alt=""
                 fill
-                sizes="50vw"
-                className="-z-20 scale-125 object-cover opacity-70 blur-2xl"
+                unoptimized
+                className="-z-20 scale-125 object-cover opacity-70"
               />
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-coral/30 via-brand-950/40 to-brand-950 lg:bg-gradient-to-r lg:from-coral/25 lg:via-brand-950/30 lg:to-brand-950" />
 

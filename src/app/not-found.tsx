@@ -4,8 +4,8 @@ import { ArrowLeft, Compass } from "lucide-react";
 export default function NotFound() {
   return (
     <section className="relative isolate flex min-h-[80vh] items-center overflow-hidden bg-brand-950 pt-28 pb-20 text-white">
-      <div className="absolute -top-32 -left-32 -z-10 size-[34rem] animate-aurora rounded-full bg-brand-600/40 blur-[120px]" />
-      <div className="absolute -right-32 -bottom-40 -z-10 size-[30rem] animate-aurora rounded-full bg-teal-500/25 blur-[120px]" />
+      <div className="absolute -top-32 -left-32 -z-10 size-[34rem] glow text-brand-600/40" />
+      <div className="absolute -right-32 -bottom-40 -z-10 size-[30rem] glow text-teal-500/25" />
       <div className="dot-grid absolute inset-0 -z-10 opacity-60" />
       <div className="container-page text-center">
         <Compass className="mx-auto size-14 animate-[spin_12s_linear_infinite] text-teal-300" />

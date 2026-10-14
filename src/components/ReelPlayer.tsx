@@ -81,7 +81,7 @@ export function ReelPlayer({ src, poster, label, caption, className }: Props) {
             type="button"
             onClick={toggle}
             aria-label={playing ? `Pause ${label} reel` : `Play ${label} reel`}
-            className="absolute right-3 bottom-4 grid size-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur transition hover:bg-white/30"
+            className="absolute right-3 bottom-4 grid size-10 place-items-center rounded-full bg-black/35 text-white ring-1 ring-white/25 transition hover:bg-black/50"
           >
             {playing ? <Pause className="size-4 fill-current" /> : <Play className="size-4 fill-current" />}
           </button>

@@ -45,9 +45,7 @@
   --animate-marquee-slow: marquee 70s linear infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-delayed: float 7s ease-in-out 2.5s infinite;
-  --animate-aurora: aurora 18s ease-in-out infinite alternate;
   --animate-dash: dash 3.5s linear infinite;
-  --animate-shine: shine 3.2s ease-in-out infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -56,11 +54,6 @@
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-  }
-  @keyframes aurora {
-    0% { transform: translate3d(0, 0, 0) scale(1); }
-    50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
-    100% { transform: translate3d(-3%, 4%, 0) scale(1.02); }
   }
   @keyframes dash {
     to { stroke-dashoffset: -40; }
@@ -192,7 +185,8 @@
     inset: 0;
     width: 40%;
     background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35), transparent);
-    animation: var(--animate-shine);
+    /* Two sweeps to catch the eye, then rest: an endless loop would keep the main thread busy while scrolling. */
+    animation: shine 3.2s ease-in-out 0.8s 2 both;
   }
   .btn-light {
     color: var(--color-brand-800);
@@ -226,6 +220,18 @@
     box-shadow: var(--shadow-soft);
   }
 
+  /* Soft colour glow (colour from text-*). A gradient instead of a huge blur() filter: looks the same,
+     but costs nothing to paint, so it never slows scrolling on phones. Scaled up to match a blur's spread. */
+  .glow {
+    pointer-events: none;
+    scale: 1.45;
+    background: radial-gradient(
+      closest-side,
+      currentColor 30%,
+      color-mix(in oklab, currentColor 45%, transparent) 62%,
+      transparent 100%
+    );
+  }
   .grain::before {
     content: "";
     position: absolute;
@@ -325,11 +331,18 @@
 .prose-mj th, .prose-mj td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--color-sand-200); vertical-align: top; }
 .prose-mj tr:last-child td { border-bottom: 0; }
 
-/* Sections below the first are skipped by the renderer until they near the viewport, so animations
-   up top (like the hero card deck) never pay for painting the rest of a long page. */
-main > section:not(:first-child) {
+/* Home-page sections below the fold are skipped by the renderer until they near the viewport, so the
+   hero never pays for painting the rest of a long page. Only used where sections are medium-sized:
+   on a single huge section (a blog article) the size estimate would make the scrollbar jump. */
+.lazy-sections > section {
   content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
+  /* Close to the real median section height, so the scrollbar doesn't jump as sections render. */
+  contain-intrinsic-size: auto 1400px;
+}
+@media (min-width: 768px) {
+  .lazy-sections > section {
+    contain-intrinsic-size: auto 1000px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

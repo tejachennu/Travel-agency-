@@ -87,7 +87,7 @@ export default function ServicesPage() {
 
       {/* Documents */}
       <section id="documents" className="relative isolate scroll-mt-20 overflow-hidden bg-brand-950 py-20 text-white sm:py-28">
-        <div className="absolute top-0 right-0 -z-10 size-[36rem] rounded-full bg-teal-500/20 blur-[130px]" />
+        <div className="absolute top-0 right-0 -z-10 size-[36rem] glow text-teal-500/20" />
         <div className="dot-grid absolute inset-0 -z-10 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">

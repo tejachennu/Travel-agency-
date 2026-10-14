@@ -213,7 +213,7 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
                 <p className="mt-5 text-xs text-muted">Flights can be added at the best available fare from your city.</p>
               </div>
               <div className="relative overflow-hidden rounded-3xl bg-brand-950 p-7 text-white">
-                <div className="absolute -top-16 -right-16 size-48 rounded-full bg-teal-400/25 blur-3xl" />
+                <div className="absolute -top-16 -right-16 size-48 glow text-teal-400/25" />
                 <Stamp className="relative size-9 text-teal-300" />
                 <h2 className="relative mt-4 font-display text-2xl">Visa &amp; documents</h2>
                 <p className="relative mt-3 leading-relaxed text-white/75">{d.visa}</p>

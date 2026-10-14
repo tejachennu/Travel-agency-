@@ -29,7 +29,7 @@ export function InstagramTile({ post: p, className }: { post: InstagramPost; cla
         sizes="(min-width: 768px) 25vw, 50vw"
         className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-brand-950/70 p-4 text-center text-white opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-brand-950/75 p-4 text-center text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <InstagramIcon size={28} />
         <p className="text-sm font-semibold">{p.caption}</p>
       </div>

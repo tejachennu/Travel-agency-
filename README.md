@@ -81,7 +81,7 @@ sources:
 - Start the body with a short intro and a `> **The short version:** …` box that answers the question straight away. Google often lifts it as a featured snippet.
 - Use `##` and `###` headings; they build the table of contents automatically. Don't add an H1.
 - Link to the matching `/destinations/<slug>` page, 2–3 related guides and `/contact`.
-- If you add a new image to `public/`, run `npm run images:dims` so it gets width and height (avoids layout shift).
+- If you add a new image to `public/`, run `npm run images:dims`. It records the image's width and height (avoids layout shift) and makes the tiny pre-blurred copy in `public/blur/` used for soft page backgrounds. The build stops if a blog cover is missing its blurred copy.
 - The build stops with a clear error if a required field is missing or the cover image doesn't exist.
 
 ## SEO: what's built in
@@ -90,7 +90,7 @@ sources:
 - **Structured data (JSON-LD):** TravelAgency with both offices, addresses, phones and Instagram; WebSite; BreadcrumbList on inner pages; TouristTrip and FAQPage on every tour package; BlogPosting and FAQPage on every guide; Service list on `/services`.
 - **Local keywords in titles:** "Travel Agency in Gandhinagar", "Tour Package from Ahmedabad", "Travel Agent in Kudasan".
 - **Internal linking:** destination pages link to their guides ("Read before you go"), guides link back to the package, the home page shows the latest guides, and every guide links to related guides.
-- **Speed:** AVIF/WebP images sized per breakpoint, two self-hosted font families, CSS-only scroll animations, `content-visibility` for below-the-fold sections and long cache headers on static assets.
+- **Speed:** AVIF/WebP images sized per breakpoint, two self-hosted font families, CSS-only scroll animations, `content-visibility` for below-the-fold home sections and long cache headers on static assets. Smooth scrolling on phones: no live `blur()`/`backdrop-filter` effects (glows are gradients, backdrops are pre-blurred images), no endless animations, and the hero card deck pauses when it's off-screen.
 
 ## SEO playbook: what the team needs to do
 

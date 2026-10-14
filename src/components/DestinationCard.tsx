@@ -32,7 +32,7 @@ export function DestinationCard({ destination: d, className, size = "default", s
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-950/90 via-brand-950/25 to-transparent transition-opacity duration-500 group-hover:from-brand-950/95" />
 
       <div className="absolute top-4 left-4 flex flex-wrap gap-2 sm:top-5 sm:left-5">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-black/30 px-3 py-1.5 text-xs font-semibold ring-1 ring-white/20">
           <Clock className="size-3.5" /> {d.duration}
         </span>
         {d.price && (

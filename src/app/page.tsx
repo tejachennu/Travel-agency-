@@ -20,18 +20,21 @@ export default function HomePage() {
       {/* Only names cross to the client — not the whole destinations data file. */}
       <Hero destinationOptions={destinations.map((d) => ({ name: d.name, region: d.region }))} />
       <DestinationMarquee />
-      <WhyUs />
-      <InternationalGrid />
-      <FeaturedPackage />
-      <IndiaDiaries />
-      <ServicesTabs />
-      <Reviews />
-      <Reels />
-      <HowItWorks />
-      <LatestGuides />
-      <InstagramFeed />
-      <FaqSection />
-      <CtaBand />
+      {/* Below the fold: the browser skips rendering these until they near the viewport (see .lazy-sections). */}
+      <div className="lazy-sections">
+        <WhyUs />
+        <InternationalGrid />
+        <FeaturedPackage />
+        <IndiaDiaries />
+        <ServicesTabs />
+        <Reviews />
+        <Reels />
+        <HowItWorks />
+        <LatestGuides />
+        <InstagramFeed />
+        <FaqSection />
+        <CtaBand />
+      </div>
     </>
   );
 }

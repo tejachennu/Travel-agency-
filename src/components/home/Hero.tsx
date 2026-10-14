@@ -9,6 +9,7 @@ import { FlagCA, FlagIN, WhatsAppIcon } from "@/components/icons";
 import { EnquiryBar, type DestinationOption } from "./EnquiryBar";
 import { HeroDeck, type DeckSlide } from "./HeroDeck";
 import { defaultEnquiry, whatsappLink } from "@/lib/whatsapp";
+import { blurSrc } from "@/lib/blur";
 
 const slides: DeckSlide[] = [
   { src: "/images/destinations/maldives.webp", name: "Maldives", note: "Overwater villas", slug: "maldives" },
@@ -31,8 +32,8 @@ export function Hero({ destinationOptions }: { destinationOptions: DestinationOp
       {/* Ambient background that follows the active postcard */}
       <HeroBackdrop active={active} />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-950/70 via-brand-950/80 to-brand-950" />
-      <div className="absolute -top-40 -left-40 -z-10 size-[42rem] animate-aurora rounded-full bg-brand-600/50 blur-[120px]" />
-      <div className="absolute -right-40 bottom-0 -z-10 size-[36rem] animate-aurora rounded-full bg-teal-500/30 blur-[120px] [animation-delay:-6s]" />
+      <div className="absolute -top-40 -left-40 -z-10 size-[42rem] glow text-brand-600/50" />
+      <div className="absolute -right-40 bottom-0 -z-10 size-[36rem] glow text-teal-500/30" />
       <div className="dot-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
       <div className="grain absolute inset-0 -z-10" />
 
@@ -71,7 +72,7 @@ export function Hero({ destinationOptions }: { destinationOptions: DestinationOp
       <div className="container-page relative grid items-center gap-14 pt-32 sm:pt-40 lg:grid-cols-12 lg:gap-8 lg:pt-44">
         {/* Copy */}
         <div className="lg:col-span-7">
-          <div className="inline-flex items-center gap-3 rounded-full bg-white/[0.07] py-1.5 pr-4 pl-1.5 text-sm text-white/80 ring-1 ring-white/15 backdrop-blur hero-in">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/[0.07] py-1.5 pr-4 pl-1.5 text-sm text-white/80 ring-1 ring-white/15 hero-in">
             <span className="flex items-center gap-1 rounded-full bg-white/10 px-2.5 py-1">
               <FlagIN size={14} />
               <FlagCA size={14} />
@@ -166,8 +167,8 @@ function HeroBackdrop({ active }: { active: MotionValue<number> }) {
         transition={{ duration: 1.4 }}
         className="absolute inset-0 -z-20 will-change-[opacity]"
       >
-        {/* Heavily blurred, so a tiny source looks identical and is far cheaper to decode and fade. */}
-        <Image src={src} alt="" fill sizes="96px" loading="eager" className="scale-110 object-cover blur-2xl" />
+        {/* Pre-blurred at build time: fading a plain image is cheap; a live blur() filter would tax phone GPUs mid-swipe. */}
+        <Image src={blurSrc(src)} alt="" fill unoptimized loading="eager" className="scale-110 object-cover" />
       </motion.div>
     </AnimatePresence>
   );

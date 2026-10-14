@@ -14,7 +14,7 @@ export function WhatsAppFab() {
         Chat with us
       </span>
       <span className="relative grid size-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-8px_rgb(37_211_102/0.8)] transition-transform group-hover:scale-105">
-        <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30 [animation-duration:2.4s]" />
+        <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30 [animation-duration:2.4s] [animation-iteration-count:4] [animation-fill-mode:forwards]" />
         <WhatsAppIcon size={28} className="relative" />
       </span>
     </a>
