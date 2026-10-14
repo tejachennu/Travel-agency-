@@ -37,7 +37,7 @@ sources:
     url: "https://www.octopus.com.hk/en/consumer/customer-service/faq/tourist-apple-pay/get.html"
 ---
 
-Hong Kong is one of the best short international trips for Indian families: two theme parks, a harbour skyline that looks unreal at night, and Macau an hour away. The main question we get from travellers in Ahmedabad is whether they need a Hong Kong visa. For a short holiday they don't, but there's one online step you cannot skip.
+Hong Kong is one of the best short international trips for Indian families: two theme parks, a spectacular harbour skyline and Macau an hour away. The first question our Ahmedabad travellers ask is whether they need a Hong Kong visa. For a short holiday they don't, but there's one online step you can't skip.
 
 > **The short version (October 2026):** Indian nationals don't need a **Hong Kong visa** for stays of up to **14 days**, but must complete the **free online Pre-Arrival Registration (PAR)** before flying. A successful PAR is valid for **six months** (or until your passport expires, if sooner) and covers **multiple visits**. **Macau** lets Indians in without arranging a visa in advance for up to **30 days**. Five days is enough for **Disneyland, Ocean Park, the Peak, Ngong Ping and Macau**.
 
@@ -62,19 +62,19 @@ Since 2017, Indian nationals have had to register online before using Hong Kong'
 3. Submit and download the **notification slip** if registration is successful.
 4. **Print the slip** and carry it with your passport. Airlines check it at check-in in India, and immigration may ask for it in Hong Kong.
 
-Each traveller needs their own registration, including babies and children. If you get a new passport, you'll need a new registration linked to it. You can only register again once your current registration has expired.
+Every traveller, including babies, needs their own registration. A new passport needs a new registration, and you can only re-register once the current one has expired.
 
 ### When to apply
 
-You can register as soon as your plans are firm, as long as the six-month validity covers your return date. We suggest doing it **at least two to three weeks before departure**. If the result isn't successful, you'll need to apply for a full Hong Kong visa, and that takes far longer than PAR.
+Register once your dates are firm, making sure the six-month validity covers your return. We suggest **at least two to three weeks before departure**, because if the result isn't successful you'll need a full Hong Kong visa, which takes far longer.
 
 ### No arrival card
 
-Hong Kong stopped requiring arrival and departure cards for visitors from **16 October 2024**, so PAR and your passport are all you need at the counter. Keep your hotel booking and return ticket handy in case you're asked.
+Hong Kong stopped requiring arrival and departure cards for visitors from **16 October 2024**, so PAR and your passport are all you need at the counter.
 
 ## Macau entry for Indians
 
-Macau runs its own immigration system, separate from both Hong Kong and mainland China. Current sources list **Indian passport holders as able to enter Macau without arranging a visa beforehand, for up to 30 days**. You're processed at the counter on arrival, which is why many older Indian blogs describe it as "visa on arrival". There's no pre-registration like Hong Kong's PAR.
+Macau runs its own immigration system. Current sources list **Indian passport holders as able to enter Macau without arranging a visa beforehand, for up to 30 days**. You're processed at the counter on arrival, which is why many older Indian blogs describe it as "visa on arrival".
 
 Carry your passport (six months' validity covers you comfortably for both Hong Kong and Macau), your hotel booking and onward ticket. Rules can change, so check the [Macao Public Security Police](https://www.fsm.gov.mo/psp/eng/) site before you go.
 
@@ -91,15 +91,15 @@ Your Hong Kong PAR covers you when you come back from Macau, as long as it's sti
 
 **Ferries** sail through the day to the Outer Harbour (Macau peninsula) and Taipa (Cotai) terminals. Fares rose by about 10% in April 2026, so check the operator's site for current prices.
 
-The **Hong Kong–Zhuhai–Macao Bridge (HZMB)** shuttle bus runs 24 hours, with departures every 5–15 minutes. The daytime fare is roughly HK$65 per adult. You clear Hong Kong departure at the Hong Kong Port, ride the bridge, then clear Macau immigration at the Macao Port. Many Cotai resorts run free shuttle buses from the ports and ferry terminals, though routes have been trimmed in recent years.
+The **Hong Kong–Zhuhai–Macao Bridge (HZMB)** shuttle bus runs 24 hours, with departures every 5–15 minutes. The daytime fare is roughly HK$65 per adult. You clear Hong Kong departure at the Hong Kong Port, ride the bridge, then clear Macau immigration at the Macao Port. Some Cotai resorts run free shuttles from the ports, though routes have been trimmed.
 
 ## Getting to Hong Kong from Ahmedabad
 
-There's no nonstop flight from Ahmedabad to Hong Kong as of late 2026. Most travellers connect via **Delhi or Mumbai**, where Cathay Pacific and Indian airlines fly direct to Hong Kong (roughly 5–6 hours). One-stop options via **Singapore** or **Bangkok** can also work well, and can be combined with our [Singapore–Malaysia](/blog/singapore-malaysia-family-itinerary) or [Thailand](/blog/thailand-visa-for-indians) trips. From the airport, the **Airport Express** train reaches Kowloon and Central in roughly 20–25 minutes.
+There's no nonstop flight from Ahmedabad to Hong Kong as of late 2026. Most travellers connect via **Delhi or Mumbai**, where Cathay Pacific and Indian airlines fly direct to Hong Kong (roughly 5–6 hours). One-stop routes via **Singapore** or **Bangkok** also work, and pair well with a [Singapore–Malaysia](/blog/singapore-malaysia-family-itinerary) or [Thailand](/blog/thailand-visa-for-indians) trip. From the airport, the **Airport Express** train reaches Kowloon and Central in roughly 20–25 minutes.
 
 ## A 5-day Hong Kong and Macau itinerary
 
-This 4-night/5-day plan keeps travel short by grouping sights by area. The Macau night is placed after Ngong Ping, because both are on Lantau near the bridge port.
+This 4-night plan groups sights by area. Macau follows Ngong Ping because both are near the bridge port on Lantau.
 
 | Day | Plan | Overnight |
 | --- | --- | --- |
@@ -111,43 +111,43 @@ This 4-night/5-day plan keeps travel short by grouping sights by area. The Macau
 
 ### Day 1: Kowloon waterfront
 
-Check in, then walk the **Tsim Sha Tsui promenade** and the **Avenue of Stars**. The **Symphony of Lights** show plays across the harbour skyline at 8 pm most nights. Take the **Star Ferry** to Central and back; it's one of the cheapest harbour views anywhere.
+Walk the **Tsim Sha Tsui promenade** and **Avenue of Stars**, catch the **Symphony of Lights** across the skyline (usually 8 pm), and ride the **Star Ferry** to Central and back.
 
 ### Day 2: Hong Kong Disneyland
 
-Take the MTR to Sunny Bay and change to the Disneyland Resort line. Don't miss **World of Frozen**, plus the castle show in the evening. Tickets are **date-based and tiered**. After the mid-2026 price rise, adult one-day tickets range from about **HK$669 on quieter days to HK$939 on peak days**; children aged 3–11 and seniors pay less, and under-3s go free. Book your date in advance.
+Take the MTR to Sunny Bay and change to the Disneyland Resort line. Don't miss **World of Frozen**, plus the castle show in the evening. Tickets are **date-based and tiered** (after a mid-2026 price rise, adult one-day tickets run from about HK$669 to HK$939); children aged 3–11 and seniors pay less, and under-3s go free. Book your date early for weekends.
 
 ### Day 3: Ocean Park and the Peak
 
-**Ocean Park** has its own MTR station on the South Island line. It mixes thrill rides on the headland with the **giant pandas**, an aquarium and cable cars over the sea. Standard adult admission is roughly **HK$500–540** (check the official site). In the late afternoon, ride the **Peak Tram** from Garden Road in Central (about **HK$116 return** for adults since December 2025). Watch the sunset from the Peak; the cover photo of this guide is that view. Queues are long at weekends, so go on a weekday if you can.
+**Ocean Park** (its own station on the MTR South Island line) mixes thrill rides with **giant pandas**, an aquarium and a cable car over the sea. In the late afternoon, ride the **Peak Tram** from Garden Road in Central. Watch the sunset from the Peak and the Sky Terrace viewing deck.
 
 ### Day 4: Ngong Ping, then Macau
 
-Take the MTR to Tung Chung and ride **Ngong Ping 360**. The cable car takes about 25 minutes over Lantau's hills. The regular adult round trip is about **HK$295** for a standard cabin; the cheaper 2026 promotions were for Hong Kong residents only. Climb the **268 steps to the Big Buddha** (Tian Tan Buddha) and have the **vegetarian meal at Po Lin Monastery**, a favourite with our vegetarian travellers. The cable car closes for scheduled maintenance a few times a year (for example, 8–18 September 2026), so check np360.com.hk before you go.
+Take the MTR to Tung Chung and ride **Ngong Ping 360**. The cable car takes about 25 minutes over Lantau's hills. Climb the **268 steps to the Big Buddha** (Tian Tan Buddha) and have the **vegetarian meal at Po Lin Monastery**. The cable car closes for scheduled maintenance a few times a year (for example, 8–18 September 2026), so check np360.com.hk before you go.
 
 From Tung Chung, it's a short taxi or bus ride to the **Hong Kong Port** for the bridge bus to Macau. Spend the evening on the **Cotai Strip**, at the Venetian's canals and the resort light shows.
 
 ### Day 5: Historic Macau and home
 
-Start at **Senado Square** and walk up to the **Ruins of St Paul's**, both part of Macau's UNESCO-listed historic centre. Then visit **A-Ma Temple** and, if time allows, the **Macau Tower** observation deck. Try a Portuguese **egg tart** (it contains egg). Take the bridge bus back in the afternoon; the Hong Kong Port is next to the airport, so it's an easy route to your flight home. Allow plenty of time for immigration on both sides.
+Walk from **Senado Square** up to the **Ruins of St Paul's**, both in Macau's UNESCO-listed historic centre, then visit **A-Ma Temple** and, time permitting, **Macau Tower**. Take the bridge bus back in the afternoon; the Hong Kong Port is next to the airport, but allow plenty of time for immigration on both sides.
 
-See our [Hong Kong tour packages](/destinations/hong-kong) for versions with Disneyland hotels, an extra Macau night or a Shenzhen add-on (which needs a Chinese visa).
+See our [Hong Kong tour packages](/destinations/hong-kong) for day-by-day plans and what we arrange.
 
 ## Vegetarian and Jain food tips
 
 - **Tsim Sha Tsui** has the largest cluster of Indian restaurants, including several pure-veg places, which makes it a practical hotel base.
 - **Chinese Buddhist vegetarian** restaurants are common; look for the character 齋 (*jai*). Po Lin Monastery at Ngong Ping is the classic example.
 - **Theme parks** have vegetarian dishes, but Jain choices are limited and outside food is restricted. Eat a solid breakfast and ask at restaurants about ingredients.
-- **Macau** food is meat- and seafood-heavy, but the Cotai resorts have international food courts with vegetarian options.
-- Carry **theplas, khakhras and ready-to-eat packs** in checked luggage for long days. Learn the phrase "no meat, no fish, no egg"; restaurants are used to dietary requests.
+- **Macau** food is meat- and seafood-heavy; the Cotai resort food courts are your best bet.
+- Carry **theplas, khakhras and ready-to-eat packs** in checked luggage, and say "no meat, no fish, no egg" clearly when ordering.
 
 ## Getting around: the Octopus card
 
 The **Octopus card** is Hong Kong's stored-value card. It works on the MTR, buses, trams, the Star Ferry and the Peak Tram, and at convenience stores and many restaurants.
 
 - **Physical card:** buy one at MTR customer service counters or the airport; it carries a refundable deposit.
-- **On iPhone:** the **Octopus App for Tourists** lets you add a card to Apple Wallet using an Indian Visa or Mastercard. The minimum first load is HK$100 plus a HK$50 deposit. Adding it directly in Apple Wallet with an Indian card doesn't work.
-- Most MTR gates now also accept contactless bank cards, but Octopus is simpler for children's fares and small purchases. Macau uses its own pataca (MOP), though Hong Kong dollars are widely accepted there.
+- **On iPhone:** the **Octopus App for Tourists** lets visitors add a card to Apple Wallet and pay with a non-Hong Kong Visa, Mastercard or UnionPay card or other listed methods. The minimum first load is HK$100 plus a HK$50 deposit. Many Indian bank cards can't be added to Apple Pay, so test this before you fly or simply buy a physical card.
+- Macau uses its own pataca (MOP), though Hong Kong dollars are widely accepted there.
 
 ## Best time to visit Hong Kong and Macau
 
@@ -158,11 +158,11 @@ The **Octopus card** is Hong Kong's stored-value card. It works on the MTR, buse
 | March – April | Mild, humid, foggy days | Fine; views can be hazy |
 | May – September | Hot, humid, heavy rain; typhoon season | Cheapest; plan indoor back-ups and flexible days |
 
-If a **typhoon signal 8** or above is raised, public transport and attractions shut down, so keep your schedule flexible in summer.
+If a **typhoon signal 8** or above is raised, attractions close and many transport services are suspended, so keep your schedule flexible in summer.
 
 ## How much a Hong Kong and Macau trip costs
 
-Hong Kong is pricier than Thailand or Vietnam, mainly because of hotels. At roughly ₹11–12 to the Hong Kong dollar in late 2026, these are the main drivers:
+Hong Kong costs more than Thailand or Vietnam, mainly because of hotels. At roughly ₹11–12 per Hong Kong dollar, the main costs are:
 
 | Item | Approximate cost (late 2026) |
 | --- | --- |
@@ -175,15 +175,7 @@ Hong Kong is pricier than Thailand or Vietnam, mainly because of hotels. At roug
 | HZMB shuttle bus, one way | About HK$65 |
 | Hong Kong PAR | Free |
 
-Prices are as published by operators in 2025–26 and can change; always check the official sites. For hotel areas, **Tsim Sha Tsui and Jordan** suit most Indian travellers (good transport and Indian food). **Mong Kok** is cheaper, and the **Disneyland hotels** are a treat for families with young children.
-
-## Common mistakes to avoid
-
-- **Paying a website for PAR.** It's free on the official site.
-- **Forgetting PAR for children** or not printing the notification slip.
-- **Typos.** Your registration details must match your passport exactly.
-- **Assuming Macau entry covers Zhuhai or Shenzhen.** Mainland China needs a separate visa.
-- **Leaving theme-park tickets to the last minute** on weekends and public holidays.
+Prices are as published by operators in 2025–26 and can change (Ngong Ping's cheaper 2026 promotions were for Hong Kong residents only), so check the official sites. For hotel areas, **Tsim Sha Tsui and Jordan** suit most Indian travellers (good transport and Indian food). **Mong Kok** is cheaper, and the **Disneyland hotels** are a treat for families with young children.
 
 Need other visa guides? See our [Vietnam e-visa guide](/blog/vietnam-e-visa-for-indians), the [international trip checklist from India](/blog/international-trip-checklist-from-india) and our [Nepal trip guide](/blog/nepal-trip-from-india-guide) for a no-visa Himalayan break.
 

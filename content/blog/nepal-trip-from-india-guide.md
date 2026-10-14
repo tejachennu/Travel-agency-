@@ -1,7 +1,7 @@
 ---
 title: "Nepal Trip from India (2026): Valid IDs, Getting There from Ahmedabad and a 6-Day Plan"
 seoTitle: "Nepal Trip from India 2026: IDs, Route & 6-Day Plan"
-description: "No visa, but only a passport or voter ID works for flights. How to reach Nepal from Ahmedabad, a 6-day Kathmandu-Pokhara-Chitwan plan and the new ₹500 note rules."
+description: "No visa, but only a passport or voter ID works for flights. Reaching Nepal from Ahmedabad, a 6-day Kathmandu-Pokhara-Chitwan plan and the new ₹500 note rules."
 date: 2026-10-13
 category: destination-guides
 destination: nepal

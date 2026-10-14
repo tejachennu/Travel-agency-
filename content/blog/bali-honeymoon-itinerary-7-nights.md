@@ -1,7 +1,7 @@
 ---
 title: "Bali Honeymoon Itinerary: 7 Nights from Ahmedabad (Legian + Ubud Pool Villa)"
 seoTitle: "Bali Honeymoon Itinerary 7 Nights from India (2026)"
-description: "Our tried-and-tested 7-night Bali honeymoon plan: 5 nights by the beach in Legian, 2 in a private-pool villa in Ubud, every tour day by day — plus visa, levy and budget tips."
+description: "Our tried-and-tested 7-night Bali honeymoon plan: 5 nights in Legian, 2 in an Ubud pool villa, every day mapped out, plus visa, levy and budget tips."
 date: 2026-10-12
 category: itineraries
 destination: bali

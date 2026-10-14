@@ -123,12 +123,10 @@ The code is the foundation. Rankings for "travel agency in Gandhinagar" and "Dub
 | 1 | Dubai Visa for Indians 2026: Types, Fees & Documents | dubai visa for indians |
 | 1 | Singapore Visa for Indians: How It Works Through Agents | singapore visa for indians |
 | 1 | Bali Visa on Arrival for Indians + Tourist Levy | bali visa for indians |
-| 1 | Indian PCC in Canada: BLS Process, Fees & Timeline | pcc canada indian passport |
-| 1 | Indian Passport Renewal in Canada (Tatkal vs Normal) | indian passport renewal canada |
+| 1 | Indian Visa for Canadian Citizens (e-Visa vs OCI) | indian visa for canadian citizens |
+| 1 | Canada Visitor Visa for Parents from India | canada visitor visa for parents |
 | 2 | Thailand Itinerary 5 Nights: Pattaya, Bangkok & Phuket | thailand itinerary 5 nights |
 | 2 | Dubai Itinerary 5 Days with Kids | dubai itinerary 5 days family |
-| 2 | Nepal Trip from India: Kathmandu, Pokhara & Chitwan | nepal tour package from ahmedabad |
-| 2 | Hong Kong & Macau Itinerary for Indians | hong kong itinerary 5 days |
 | 2 | Kashmir Itinerary 6 Days: Srinagar, Gulmarg, Pahalgam | kashmir itinerary 6 days |
 | 2 | Best Honeymoon Destinations from India Under ₹1.5 Lakh | honeymoon destinations from india |
 | 3 | Weekend Getaways from Ahmedabad (Polo Forest, Saputara, Mount Abu) | weekend getaways from ahmedabad |
@@ -139,7 +137,9 @@ The code is the foundation. Rankings for "travel agency in Gandhinagar" and "Dub
 | 3 | Char Dham Yatra Guide for Gujarati Families | char dham yatra package from ahmedabad |
 | 3 | Vande Bharat / Flights: Ahmedabad to Goa Travel Options | ahmedabad to goa |
 
-Destination guides to pair with every package page (`/destinations/<slug>`) still missing a guide: Hong Kong, Nepal, Punta Cana, Malaysia (standalone).
+Package pages still without a dedicated guide: Punta Cana and Malaysia (standalone). Also worth a refresh: the Bali honeymoon guide (~800 words) could grow to match the newer 1,700–2,000-word guides.
+
+Keep guides fresh: visa and fee details are dated "as of late 2026". Re-check them every few months and set `updated:` when you do.
 
 ## Where the content came from
 

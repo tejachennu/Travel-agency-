@@ -1,7 +1,7 @@
 ---
 title: "Indian Passport Surrender Certificate in Canada: Who Needs It, Fees and How to Apply"
 seoTitle: "Indian Passport Surrender Certificate Canada (2026 Guide)"
-description: "Became a Canadian citizen? You must surrender your Indian passport and get a surrender certificate before OCI or an Indian visa. Who needs it, fees, documents and steps."
+description: "New Canadian citizen? Surrender your Indian passport and get a surrender certificate before applying for OCI. Who needs it, fees, documents and steps."
 date: 2026-10-13
 category: visa-and-documents
 primaryKeyword: "indian passport surrender certificate canada"
